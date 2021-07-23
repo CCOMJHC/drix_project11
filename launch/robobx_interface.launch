@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="drix_project11" type="robobox_interface" name="robobox_interface"/>
+</launch>
