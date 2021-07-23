@@ -81,7 +81,9 @@ public:
       imu.header.stamp = data->stamp;
       tf2::Quaternion q;
       double yaw = M_PI*(90-data->heading)/180.0;
+      std::cerr << "yaw: " << yaw;
       q.setEuler(yaw, 0, 0);
+      std::cerr << "q: " << q << std::endl;
       tf2::convert(q, imu.orientation);
       m_orientation_pub.publish(imu);
     }
