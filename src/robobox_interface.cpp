@@ -7,11 +7,18 @@
 #include "drix_msgs/DrixsNetworkInfo.h"
 #include "drix_msgs/LauncherDescriptionArray.h"
 #include "mdt_msgs/LightGps.h"
+#include "mdt_msgs/Gps.h"
 
 #include <tf2/utils.h>
 
-
 ros::Publisher platforms_pub;
+
+ros::Subscriber mothership_gps_sub;
+ros::Publisher mothership_position_pub;
+ros::Publisher mothership_orientation_pub;
+ros::Publisher mothership_velocity_pub;
+
+project11_msgs::Platform mothership_platform;
 
 class Platform
 {
@@ -108,7 +115,41 @@ void publishPlatforms(const ros::TimerEvent& event)
   project11_msgs::PlatformList pl;
   for(auto platform: platforms)
     platform.second.addToList(pl);
+  if(!mothership_platform.name.empty())
+    pl.platforms.push_back(mothership_platform);
   platforms_pub.publish(pl);
+}
+
+void mothershipGpsCallback(const mdt_msgs::Gps::ConstPtr& data)
+{
+  if(mothership_platform.name.empty())
+  {
+    ros::NodeHandle n;
+    project11_msgs::NavSource nav;
+    nav.name = "robobox";
+    nav.position_topic = "/project11/robobox/mothership/position";
+    mothership_position_pub = n.advertise<sensor_msgs::NavSatFix>(nav.position_topic, 1);
+    nav.orientation_topic = "/project11/robobox/mothership/orientation";
+    mothership_orientation_pub = n.advertise<sensor_msgs::Imu>(nav.orientation_topic, 1);
+    mothership_platform.nav_sources.push_back(nav);
+    mothership_platform.name = "mothership";   
+  }
+
+  sensor_msgs::NavSatFix nsf;
+  nsf.header = data->header;
+  nsf.latitude = data->latitude;
+  nsf.longitude = data->longitude;
+  nsf.altitude = data->altitude;
+  mothership_position_pub.publish(nsf);
+
+  sensor_msgs::Imu imu;
+  imu.header = data->header;
+  tf2::Quaternion q;
+  double yaw = M_PI*(90-data->heading)/180.0;
+  q.setEuler(yaw, 0, 0);
+  tf2::convert(q, imu.orientation);
+  mothership_orientation_pub.publish(imu);
+
 }
 
 int main(int argc, char **argv)
@@ -120,6 +161,7 @@ int main(int argc, char **argv)
 
   ros::Subscriber drix_network_info_sub = n.subscribe("/bridge_comm_masters/network_info", 1, drixNetworkInfoCallback);
   ros::Subscriber launcher_description_sub = n.subscribe("/launchers/list", 1, launcherDescriptionCallback);
+  ros::Subscriber mothership_gps_sub = n.subscribe("/mothership_gps", 1, mothershipGpsCallback);
 
   ros::Timer timer = n.createTimer(ros::Duration(1.0), publishPlatforms);
   ros::spin();
