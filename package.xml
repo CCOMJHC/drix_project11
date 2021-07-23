@@ -12,6 +12,8 @@
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <exec_depend>project11</exec_depend>
+  <depend>roscpp</depend>
+  <depend>drix_msgs</depend>
+  <depend>project11_msgs</depend>
   
 </package>
