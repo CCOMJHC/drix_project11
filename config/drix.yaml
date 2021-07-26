@@ -1,0 +1,14 @@
+p11_udp_bridge/remotes:
+    operator:
+        host: localhost
+        port: 4201
+        topics:
+          project11_display: {source: project11/display}
+          project11_heartbeat: {source: project11/heartbeat}
+          project11_status_mission_manager: {source: project11/status/mission_manager}
+          project11_response: {source: project11/response}
+          control_helm: {source: control/helm}
+            
+p11_helm_manager/piloting_modes/active: ['manual', 'autonomous']
+p11_helm_manager/piloting_modes/standby: ['standby']
+p11_helm_manager/piloting_mode_prefix: 'piloting_mode/'
