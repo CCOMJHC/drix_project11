@@ -1,6 +1,6 @@
 p11_udp_bridge/remotes:
     operator:
-        host: 192.168.8.142
+        host: 192.168.8.182
         port: 4201
         topics:
           project11_display: {source: project11/display}
