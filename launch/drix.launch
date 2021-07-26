@@ -1,0 +1,4 @@
+<launch>
+  <arg name="namespace" default="project11/drix"/> 
+  <node pkg="drix_helm" type="drix_helm_node" name="p11_drix_helm" ns="$(arg namespace)"/>
+</launch>
