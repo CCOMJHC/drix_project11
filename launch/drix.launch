@@ -23,5 +23,4 @@
     <param name="piloting_mode_prefix" value="piloting_mode/"/>
   </node>
 
-
 </launch>
