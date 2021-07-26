@@ -146,7 +146,7 @@ void mothershipGpsCallback(const mdt_msgs::Gps::ConstPtr& data)
   imu.header = data->header;
   tf2::Quaternion q;
   double yaw = M_PI*(90-data->heading)/180.0;
-  q.setEuler(yaw, 0, 0);
+  q.setRPY(0,0,yaw);
   tf2::convert(q, imu.orientation);
   mothership_orientation_pub.publish(imu);
 
