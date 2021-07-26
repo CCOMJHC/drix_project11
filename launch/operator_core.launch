@@ -6,7 +6,7 @@
 
   <rosparam command="load" file="$(find drix_project11)/config/drix_operator.yaml" ns="$(arg namespace)"/>
 
-  <rosparam param="udp_bridge/remotes/robot/host" ns="$(arg namespace)">192.168.$(arg drixNumber).180</rosparam>
+  <rosparam param="udp_bridge/remotes/robot/host" ns="$(arg namespace)">"192.168.$(arg drixNumber).180"</rosparam>
 
   <include file="$(find project11)/launch/operator_core.launch">
     <arg name="operatorJoystick" value="1"/>
