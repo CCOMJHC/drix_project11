@@ -10,6 +10,8 @@
     <param name="port" value="$(arg localPort)"/>
   </node>
 
+  <node pkg="command_bridge" type="command_bridge_receiver_node.py" name="command_bridge_receiver" ns="$(arg namespace)"/>
+
   <node pkg="helm_manager" type="helm_manager_node" name="p11_helm_manager" ns="$(arg namespace)">
     <remap from="out/helm" to="control/helm"/>
     <remap from="out/cmd_vel" to="control/cmd_vel"/>
