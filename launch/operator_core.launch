@@ -15,5 +15,7 @@
 
   <rosparam param="udp_bridge/remotes/robot/host" ns="$(arg namespace)" subst_value="True">"192.168.$(arg drixNumber).180"</rosparam>
 
+  <rosparam param="udp_bridge/remotes/robot/name" ns="$(arg namespace)" subst_value="True">"$(arg robotNamespace)"</rosparam>
+
 
 </launch>
