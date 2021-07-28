@@ -8,6 +8,7 @@
 #include "drix_msgs/LauncherDescriptionArray.h"
 #include "mdt_msgs/LightGps.h"
 #include "mdt_msgs/Gps.h"
+#include "mdt_msgs/ShipSize.h"
 
 #include <tf2/utils.h>
 
@@ -37,6 +38,9 @@ public:
       nav.orientation_topic = "/project11/robobox/"+data.drix_name+"/orientation";
       m_orientation_pub = n.advertise<sensor_msgs::Imu>(nav.orientation_topic, 1);
       m_platform.nav_sources.push_back(nav);
+      m_platform.length = 7.7;
+      m_platform.width = 0.85;
+      m_platform.reference_x = (m_platform.length/2.0)-3.2; // bow is 3.2m from phins ref
     }
     m_update_time = ros::Time::now();
   }
@@ -55,6 +59,8 @@ public:
       nav.orientation_topic = "/project11/robobox/"+data.name+"/orientation";
       m_orientation_pub = n.advertise<sensor_msgs::Imu>(nav.orientation_topic, 1);
       m_platform.nav_sources.push_back(nav);
+      m_platform.length = 8.3;
+      m_platform.width = 2.51;
     }
     m_update_time = ros::Time::now();
   }
@@ -152,6 +158,12 @@ void mothershipGpsCallback(const mdt_msgs::Gps::ConstPtr& data)
 
 }
 
+void mothershipSizeCallback(const mdt_msgs::ShipSize::ConstPtr& data)
+{
+  mothership_platform.length = data->length;
+  mothership_platform.width = data->width;
+}
+
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "robobox_interface");
@@ -162,6 +174,7 @@ int main(int argc, char **argv)
   ros::Subscriber drix_network_info_sub = n.subscribe("/bridge_comm_masters/network_info", 1, drixNetworkInfoCallback);
   ros::Subscriber launcher_description_sub = n.subscribe("/launchers/list", 1, launcherDescriptionCallback);
   ros::Subscriber mothership_gps_sub = n.subscribe("/mothership_gps", 1, mothershipGpsCallback);
+  ros::Subscriber mothership_size_sub = n.subscribe("/mothership_size", 1, mothershipSizeCallback);
 
   ros::Timer timer = n.createTimer(ros::Duration(1.0), publishPlatforms);
   ros::spin();
