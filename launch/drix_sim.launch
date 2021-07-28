@@ -1,0 +1,13 @@
+<launch>
+  <arg name="drixNumber" default="1"/>
+  <arg name="namespace" default="project11/drix_$(arg drixNumber)"/> 
+  <arg name="localPort" default="4200"/>
+
+  <include file="$(find drix_project11)/launch/drix.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="localPort" value="$(arg localPort)"/>
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+  </include>
+
+  <rosparam param="udp_bridge/remotes/operator/host" ns="$(arg namespace)">"172.16.0.1"</rosparam>
+</launch>

@@ -1,9 +1,7 @@
 <launch>
-  <arg name="namespace" default="operator"/>
-  <arg name="robotNamespace" default="ben"/>
+  <arg name="namespace" default="project11/operator"/>
   <arg name="drixNumber"/>
-
-
+  <arg name="robotNamespace" default="project11/drix_$(arg drixNumber)"/>
 
   <include file="$(find project11)/launch/operator_core.launch">
     <arg name="operatorJoystick" value="1"/>

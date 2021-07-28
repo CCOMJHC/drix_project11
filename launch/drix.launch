@@ -1,26 +1,26 @@
 <launch>
   <arg name="namespace" default="project11/drix"/> 
   <arg name="localPort" default="4200"/>
+  <arg name="drixNumber"/>
+  <arg name="operator_ip" default="192.168.$(arg drixNumber).180"/>
 
-  <node pkg="drix_helm" type="drix_helm_node" name="p11_drix_helm" ns="$(arg namespace)"/>
+  <include file="$(find project11)/launch/robot_core.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+  </include>
+
+
+  <node pkg="drix_helm" type="drix_helm_node" name="drix_helm" ns="$(arg namespace)">
+    <param name="frame_id" value="$(arg namespace)/base_link"/>
+  </node>
+
+  <node pkg="ixblue_phins_adapter" type="ixblue_phins_adapter_node" name="phins_adaptor" ns="$(arg namespace)">
+    <param name="frame_id" value="$(arg namespace)/base_link"/>
+  </node>
 
   <rosparam command="load" file="$(find drix_project11)/config/drix.yaml" ns="$(arg namespace)"/>
-
-  <node pkg="udp_bridge" type="udp_bridge_node" name="udp_bridge" ns="$(arg namespace)">
-    <param name="port" value="$(arg localPort)"/>
-  </node>
-
-  <node pkg="command_bridge" type="command_bridge_receiver_node.py" name="command_bridge_receiver" ns="$(arg namespace)"/>
-
-  <node pkg="mission_manager" type="mission_manager_node.py" name="mission_manager" output="screen" ns="$(arg namespace)"/>
-
-  <node pkg="helm_manager" type="helm_manager_node" name="p11_helm_manager" ns="$(arg namespace)">
-    <remap from="out/helm" to="control/helm"/>
-    <remap from="out/cmd_vel" to="control/cmd_vel"/>
-    <remap from="heartbeat" to="project11/heartbeat"/>
-    <remap from="status/helm" to="project11/status/helm"/>
-    <remap from="piloting_mode" to="project11/piloting_mode"/>
-    <param name="piloting_mode_prefix" value="piloting_mode/"/>
-  </node>
+  <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>
+  <param name="/$(arg namespace)/hover_action/minimum_distance" value="15"/>
+  <param name="/$(arg namespace)/hover_action/maximum_distance" value="30"/>
+  <param name="/$(arg namespace)/mission_manager/waypoint_threshold" value="15"/>
 
 </launch>

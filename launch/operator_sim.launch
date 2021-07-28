@@ -1,0 +1,14 @@
+<launch>
+  <arg name="namespace" default="project11/operator"/>
+  <arg name="robotNamespace" default="project11/drix_1"/>
+  <arg name="drixNumber" default="1"/>
+
+
+  <include file="$(find drix_project11)/launch/operator_core.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="robotNamespace" value="$(arg robotNamespace)"/>
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+  </include>
+
+  <rosparam param="udp_bridge/remotes/robot/host" ns="$(arg namespace)" subst_value="True">"172.16.0.1"</rosparam>
+</launch>
