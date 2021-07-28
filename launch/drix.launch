@@ -1,7 +1,7 @@
 <launch>
-  <arg name="namespace" default="project11/drix"/> 
-  <arg name="localPort" default="4200"/>
   <arg name="drixNumber"/>
+  <arg name="namespace" default="project11/drix_$(arg drixNumber)"/> 
+  <arg name="localPort" default="4200"/>
   <arg name="operator_ip" default="192.168.$(arg drixNumber).180"/>
 
   <include file="$(find project11)/launch/robot_core.launch">
