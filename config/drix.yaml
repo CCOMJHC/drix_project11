@@ -3,3 +3,10 @@ mru_transform/sensors:
    topics: { position: 'nav/phins/position', orientation: 'nav/phins//orientation', velocity: 'nav/phins/velocity'}
  - name: gps
    topics: { position: 'nav/oem/position', orientation: 'nav/oem/orientation', velocity: 'nav/oem/velocity'}
+ - name: ais
+   topics: { position: 'nav/ais/position', orientation: 'nav/ais/orientation', velocity: 'nav/ais/velocity'}
+
+udp_bridge/remotes:
+    operator:
+        topics:
+          sensors_ais_contact: {source: ais/contact}

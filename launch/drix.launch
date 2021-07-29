@@ -17,6 +17,17 @@
     <param name="frame_id" value="$(arg namespace)/base_link"/>
   </node>
 
+  <node pkg="drix_helm" type="ais_to_udp" name="ais_to_udp" ns="$(arg namespace)">
+  </node>
+
+  <node pkg="ais" type="ais_node.py" name="ais_node" ns="$(arg namespace)">
+    <param name="input_type" value="udp"/>
+    <param name="input_port" value="4010"/>
+    <remap from="ais/position" to="nav/ais/position"/>
+    <remap from="ais/orientation" to="nav/ais/orientation"/>
+    <remap from="ais/velocity" to="nav/ais/velocity"/>
+  </node>
+
   <rosparam command="load" file="$(find drix_project11)/config/drix.yaml" ns="$(arg namespace)"/>
   <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>
   <param name="/$(arg namespace)/hover_action/minimum_distance" value="15"/>
