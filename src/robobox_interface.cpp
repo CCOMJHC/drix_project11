@@ -2,6 +2,7 @@
 
 #include "sensor_msgs/NavSatFix.h"
 #include "sensor_msgs/Imu.h"
+#include "geometry_msgs/TwistWithCovarianceStamped.h"
 #include "project11_msgs/PlatformList.h"
 
 #include "drix_msgs/DrixsNetworkInfo.h"
@@ -37,6 +38,8 @@ public:
       m_position_pub = n.advertise<sensor_msgs::NavSatFix>(nav.position_topic, 1);
       nav.orientation_topic = "/project11/robobox/"+data.drix_name+"/orientation";
       m_orientation_pub = n.advertise<sensor_msgs::Imu>(nav.orientation_topic, 1);
+      nav.velocity_topic = "/project11/robobox/"+data.drix_name+"/velocity";
+      m_velocity_pub = n.advertise<geometry_msgs::TwistWithCovarianceStamped>(nav.velocity_topic, 1);
       m_platform.nav_sources.push_back(nav);
       m_platform.length = 7.7;
       m_platform.width = 0.85;
@@ -81,15 +84,25 @@ public:
       nsf.longitude = data->longitude;
       m_position_pub.publish(nsf);
     }
+    double yaw = M_PI*(90-data->heading)/180.0;
     if(m_orientation_pub)
     {
       sensor_msgs::Imu imu;
       imu.header.stamp = data->stamp;
       tf2::Quaternion q;
-      double yaw = M_PI*(90-data->heading)/180.0;
       q.setRPY(0,0,yaw);
       tf2::convert(q, imu.orientation);
       m_orientation_pub.publish(imu);
+    }
+    if(m_velocity_pub)
+    {
+      double sin_yaw = sin(yaw);
+      double cos_yaw = cos(yaw);
+      geometry_msgs::TwistWithCovarianceStamped twcs;
+      twcs.header.stamp = data->stamp;
+      twcs.twist.twist.linear.x = data->sog*cos_yaw;
+      twcs.twist.twist.linear.y = data->sog*sin_yaw;
+      m_velocity_pub.publish(twcs);
     }
   }
 
