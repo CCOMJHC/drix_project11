@@ -1,10 +1,10 @@
 mru_transform/sensors:
  - name: phins
-   topics: { position: 'nav/phins/position', orientation: 'nav/phins//orientation', velocity: 'nav/phins/velocity'}
+   topics: { position: 'project11/nav/phins/position', orientation: 'project11/nav/phins/orientation', velocity: 'project11/nav/phins/velocity'}
  - name: gps
-   topics: { position: 'nav/oem/position', orientation: 'nav/oem/orientation', velocity: 'nav/oem/velocity'}
+   topics: { position: 'project11/nav/oem/position', orientation: 'project11/nav/oem/orientation', velocity: 'project11/nav/oem/velocity'}
  - name: ais
-   topics: { position: 'nav/ais/position', orientation: 'nav/ais/orientation', velocity: 'nav/ais/velocity'}
+   topics: { position: 'project11/nav/ais/position', orientation: 'project11/nav/ais/orientation', velocity: 'project11/nav/ais/velocity'}
 
 udp_bridge/remotes:
     operator:
