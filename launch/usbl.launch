@@ -1,0 +1,8 @@
+<launch>
+  <arg name="drixNumber"/>
+  <arg name="namespace" default="project11/drix_$(arg drixNumber)"/>
+
+  <node pkg="sonardyne_usbl" type="ranger_node.py" name="usbl" ns="$(arg namespace)">
+    <param name="host" value="survey_pc"/>
+  </node>
+</launch>
