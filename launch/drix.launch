@@ -28,6 +28,12 @@
     <remap from="ais/velocity" to="nav/ais/velocity"/>
   </node>
 
+  <include file="$(find drix_project11)/launch/usbl.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="namespace" value="$(arg namespace)"/>
+  </include>
+
+
   <rosparam command="load" file="$(find drix_project11)/config/drix.yaml" ns="$(arg namespace)"/>
   <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>
   <param name="/$(arg namespace)/hover_action/minimum_distance" value="15"/>
