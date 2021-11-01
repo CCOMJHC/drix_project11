@@ -17,7 +17,9 @@ include_directories(
 )
 
 add_executable(robobox_interface src/robobox_interface.cpp)
-
 target_link_libraries(robobox_interface ${catkin_LIBRARIES})
-
 add_dependencies(robobox_interface ${catkin_EXPORTED_TARGETS})
+
+add_executable(geopoint_to_asv src/geopoint_to_asv.cpp)
+target_link_libraries(geopoint_to_asv ${catkin_LIBRARIES})
+add_dependencies(geopoint_to_asv ${catkin_EXPORTED_TARGETS})
