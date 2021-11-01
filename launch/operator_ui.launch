@@ -1,0 +1,16 @@
+<launch>
+  <arg name="namespace" default="project11/operator"/>
+  <arg name="drixNumber"/>
+  <arg name="robotNamespace" default="project11/drix_$(arg drixNumber)"/>
+  <arg name="backgroundChart" default="$(find camp)/workspace/13283/13283_2.KAP"/>
+  <arg name="rqt" default="false"/>
+  <arg name="dual_camp" default="false"/>
+
+  <include file="$(find project11)/launch/operator_ui.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="robotNamespace" value="$(arg robotNamespace)"/>
+    <arg name="backgroundChart" value="$(arg backgroundChart)"/>
+    <arg name="rqt" value="$(arg rqt)"/>
+    <arg name="dual_camp" value="$(arg dual_camp)"/>
+  </include>
+</launch>
