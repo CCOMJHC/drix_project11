@@ -4,9 +4,10 @@
   <arg name="localPort" default="4200"/>
   <arg name="operator_ip" default="192.168.$(arg drixNumber).180"/>
   <arg name="mesobot_namespace" default="project11/mesobot"/>
-  
+  <arg name="logDirectory"/>
+
   <!-- acoustic address or transponder number -->
-  <arg name="mesobot_address" default="2001"/>
+  <arg name="mesobot_address" default="2211"/>
 
   <include file="$(find project11)/launch/robot_core.launch">
     <arg name="namespace" value="$(arg namespace)"/>
@@ -49,4 +50,5 @@
   <param name="/$(arg namespace)/hover_action/maximum_distance" value="30"/>
   <param name="/$(arg namespace)/mission_manager/waypoint_threshold" value="15"/>
 
+  <node pkg="rosbag" type="record" name="project11_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/project11 --split --duration=10m --lz4 -e &quot;/project11/(.*)&quot;"/>
 </launch>

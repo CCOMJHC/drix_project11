@@ -10,3 +10,6 @@ udp_bridge/remotes:
     operator:
         topics:
           sensors_ais_contact: {source: ais/contact}
+          diagnostics: {source: ''}
+          tf: {source: ''}
+          tf_static: {source: ''}
