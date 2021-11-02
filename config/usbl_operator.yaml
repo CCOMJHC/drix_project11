@@ -1,0 +1,4 @@
+project11/platforms/usbl:
+  nav_sources:
+    usbl:
+      geopoint_topic: /project11/drix_8/usbl/positions/2001
