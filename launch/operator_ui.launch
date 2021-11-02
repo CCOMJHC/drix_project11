@@ -9,6 +9,8 @@
 
   <rosparam if="$(arg usbl)" command="load" file="$(find drix_project11)/config/usbl_operator.yaml" ns="$(arg namespace)"/>
 
+  <rosparam command="load" file="$(find mesobot_project11)/config/mesobot_operator.yaml" ns="$(arg namespace)"/>
+
   <include file="$(find project11)/launch/operator_ui.launch">
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="robotNamespace" value="$(arg robotNamespace)"/>
