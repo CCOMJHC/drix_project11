@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Drix Project11 Operator
+Comment=
+Terminal=true
+Exec=/home/field/project11/catkin_ws/src/drix_project11/scripts/start_tmux_operator.sh
+Type=Application
+Icon=/home/field/project11/catkin_ws/src/camp/src/camp--icon.png
+
