@@ -10,4 +10,3 @@ udp_bridge/remotes:
     operator:
         topics:
           sensors_ais_contact: {source: ais/contact}
-          usbl_2001_position: {source: usbl/positions/2001}

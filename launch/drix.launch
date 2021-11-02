@@ -3,6 +3,10 @@
   <arg name="namespace" default="project11/drix_$(arg drixNumber)"/> 
   <arg name="localPort" default="4200"/>
   <arg name="operator_ip" default="192.168.$(arg drixNumber).180"/>
+  <arg name="mesobot_namespace" default="project11/mesobot"/>
+  
+  <!-- acoustic address or transponder number -->
+  <arg name="mesobot_address" default="2001"/>
 
   <include file="$(find project11)/launch/robot_core.launch">
     <arg name="namespace" value="$(arg namespace)"/>
@@ -33,6 +37,11 @@
     <arg name="namespace" value="$(arg namespace)"/>
   </include>
 
+  <node pkg="mesobot_project11" type="mesobot_node.py" name="mesobot" ns="$(arg mesobot_namespace)">
+    <remap from="sms" to="/$(arg namespace)/usbl/received_sms"/>
+    <remap from="position" to="/$(arg namespace)/usbl/positions/$(arg mesobot_address)"/>
+  </node>
+  <rosparam command="load" file="$(find drix_project11)/config/mesobot.yaml" ns="$(arg namespace)"/>
 
   <rosparam command="load" file="$(find drix_project11)/config/drix.yaml" ns="$(arg namespace)"/>
   <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>

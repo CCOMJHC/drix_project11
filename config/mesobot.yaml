@@ -1,0 +1,6 @@
+udp_bridge/remotes:
+    operator:
+        topics:
+          usbl_2001_position: {source: usbl/positions/2001}
+          mesobot_heartbeat: {source: /project11/mesobot/project11/heartbeat}
+          mesobot_position: {source: /project11/mesobot/nav/position}
