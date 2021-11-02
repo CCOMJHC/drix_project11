@@ -5,6 +5,9 @@
   <arg name="backgroundChart" default="$(find camp)/workspace/13283/13283_2.KAP"/>
   <arg name="rqt" default="false"/>
   <arg name="dual_camp" default="false"/>
+  <arg name="usbl" default="false"/>
+
+  <rosparam if="$(arg usbl)" command="load" file="$(find drix_project11)/config/usbl_operator.yaml" ns="$(arg namespace)"/>
 
   <include file="$(find project11)/launch/operator_ui.launch">
     <arg name="namespace" value="$(arg namespace)"/>
