@@ -9,7 +9,7 @@ mru_transform/sensors:
 udp_bridge/remotes:
     operator:
         topics:
-          sensors_ais_contact: {source: ais/contact}
+          sensors_ais_contact: {source: project11/ais/contact}
           diagnostics: {source: ''}
           tf: {source: ''}
           tf_static: {source: ''}
