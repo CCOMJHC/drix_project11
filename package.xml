@@ -15,5 +15,6 @@
   <depend>roscpp</depend>
   <depend>drix_msgs</depend>
   <depend>project11_msgs</depend>
+  <depend>project11</depend>
   
 </package>

@@ -3,12 +3,13 @@ project(drix_project11)
 
 find_package(catkin REQUIRED
   drix_msgs
+  project11
   project11_msgs
   roscpp
 )
 
 catkin_package(
-  CATKIN_DEPENDS roscpp
+  CATKIN_DEPENDS roscpp project11
 )
 
 include_directories(
@@ -23,3 +24,7 @@ add_dependencies(robobox_interface ${catkin_EXPORTED_TARGETS})
 add_executable(geopoint_to_asv src/geopoint_to_asv.cpp)
 target_link_libraries(geopoint_to_asv ${catkin_LIBRARIES})
 add_dependencies(geopoint_to_asv ${catkin_EXPORTED_TARGETS})
+
+add_executable(geopose_to_asv src/geopose_to_asv.cpp)
+target_link_libraries(geopose_to_asv ${catkin_LIBRARIES})
+add_dependencies(geopose_to_asv ${catkin_EXPORTED_TARGETS})
