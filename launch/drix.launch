@@ -8,6 +8,7 @@
 
   <!-- acoustic address or transponder number -->
   <arg name="mesobot_address" default="2211"/>
+  <arg name="mesobot_backup_address" default="2712"/>
 
   <include file="$(find project11)/launch/robot_core.launch">
     <arg name="namespace" value="$(arg namespace)"/>
@@ -40,7 +41,8 @@
 
   <node pkg="mesobot_project11" type="mesobot_node.py" name="mesobot" ns="$(arg mesobot_namespace)">
     <remap from="sms" to="/$(arg namespace)/usbl/received_sms"/>
-    <remap from="position" to="/$(arg namespace)/usbl/positions/$(arg mesobot_address)"/>
+    <remap from="position" to="/$(arg namespace)/usbl_ranger/positions/$(arg mesobot_address)"/>
+    <remap from="backup_position" to="/$(arg namespace)/usbl_ranger/positions/$(arg mesobot_backup_address)"/>
   </node>
   <rosparam command="load" file="$(find drix_project11)/config/mesobot.yaml" ns="$(arg namespace)"/>
 

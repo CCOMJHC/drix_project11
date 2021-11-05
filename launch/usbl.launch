@@ -2,7 +2,13 @@
   <arg name="drixNumber" default="8"/>
   <arg name="namespace" default="project11/drix_$(arg drixNumber)"/>
 
-  <node pkg="sonardyne_usbl" type="ranger_node.py" name="usbl" ns="$(arg namespace)">
+  <node pkg="sonardyne_usbl" type="ranger_node.py" name="usbl_ranger" ns="$(arg namespace)">
     <param name="host" value="survey_pc"/>
+  </node>
+  <node pkg="sonardyne_usbl" type="modem_node.py" name="usbl_modem" ns="$(arg namespace)">
+    <param name="connection/type" value="udp"/>
+    <param name="connection/host" value="survey_pc"/>
+    <param name="connection/input_port" value="50011"/>
+    <param name="connection/output_port" value="50010"/>
   </node>
 </launch>
