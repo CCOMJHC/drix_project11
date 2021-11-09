@@ -10,6 +10,8 @@ It expects Sonardyne's Ranger software to be running and properly configured on 
 
 Verify that beacons are activly tracked and power settings are appropriate for the conditions.
 
+Verify that PAN port and Remote Control ports are configured and match the ROS configurations.
+
 ## Operator station
 
 Mesobot does not show up automatically in camp. Using the `drix_project11` package's `operator_ui.launch` file, the `mesobot` argument must be spcifed to be true.
