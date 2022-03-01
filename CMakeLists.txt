@@ -9,7 +9,7 @@ find_package(catkin REQUIRED
 )
 
 catkin_package(
-  CATKIN_DEPENDS roscpp project11
+  CATKIN_DEPENDS roscpp project11 project11_msgs
 )
 
 include_directories(
