@@ -1,0 +1,44 @@
+pub_rate: 1.0 # Optional
+base_path: '' # Optional, prepended to all diagnostic output
+analyzers:
+  drix:
+    type: GenericAnalyzer
+    path: Drix
+    timeout: 5.0
+    find_and_remove_prefix: d_drix
+  kongsberg:
+    type: GenericAnalyzer
+    path: Kongsberg
+    timeout: 5.0
+    find_and_remove_prefix: p_kongsberg_em_controller
+  rosmon:
+    type: GenericAnalyzer
+    path: Rosmon
+    timeout: 5.0
+    find_and_remove_prefix: /rosmon_
+  jetson:
+    type: GenericAnalyzer
+    path: Jetson
+    timeout: 5.0
+    find_and_remove_prefix: jetson_stats
+  swift:
+    type: GenericAnalyzer
+    path: Swift
+    timeout: 5.0
+    find_and_remove_prefix: d_swift
+  ouster:
+    type: GenericAnalyzer
+    path: Ouster Manager
+    timeout: 5.0
+    find_and_remove_prefix: ouster_manager
+  lidar:
+    type: GenericAnalyzer
+    path: Lidar
+    timeout: 5.0
+    find_and_remove_prefix: lidar_manager
+  ping:
+    type: GenericAnalyzer
+    path: Ping
+    timeout: 5.0
+    find_and_remove_prefix: p_ping_diagnostics
+
