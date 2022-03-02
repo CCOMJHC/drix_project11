@@ -1,10 +1,10 @@
 <launch>
   <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi241">
-    <rosparam param="oids">[wlanClientSNR.1, wlanTxRate.1.1, ifInOctets.8, ifOutOctets.8]</rosparam>
+    <rosparam param="oids">[ifInOctets.8, ifOutOctets.8]</rosparam>
     <param name="host" value="192.168.0.241"/>
   </node>
   <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi243">
-    <rosparam param="oids">[wlanClientSNR.1, wlanTxRate.1.1, ifInOctets.8, ifOutOctets.8]</rosparam>
+    <rosparam param="oids">[ifInOctets.8, ifOutOctets.8]</rosparam>
     <param name="host" value="192.168.0.243"/>
   </node>
 </launch>
