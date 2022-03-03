@@ -15,5 +15,5 @@
     <rosparam param="oids">[ifInOctets.8, ifOutOctets.8]</rosparam>
     <param name="host" value="192.168.0.243"/>
   </node>
-  <node pkg="rosbag" type="record" name="snmp_wifi" args="-o $(find snmp_diag)/log/ --split --duration=1h /diagnostics" />
+  <node pkg="rosbag" type="record" name="snmp_wifi" args="-o $(find snmp_diag)/logs/snmp_wifi --split --duration=1h /diagnostics" />
 </launch>
