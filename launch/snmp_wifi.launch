@@ -1,18 +1,14 @@
 <launch>
   <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_240">
-    <rosparam param="oids">[ifInOctets.8, ifOutOctets.8]</rosparam>
     <param name="host" value="192.168.0.240"/>
   </node>
   <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_8_241">
-    <rosparam param="oids">[ifInOctets.8, ifOutOctets.8]</rosparam>
     <param name="host" value="192.168.8.241"/>
   </node>
   <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_242">
-    <rosparam param="oids">[ifInOctets.8, ifOutOctets.8]</rosparam>
     <param name="host" value="192.168.0.242"/>
   </node>
   <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_243">
-    <rosparam param="oids">[ifInOctets.8, ifOutOctets.8]</rosparam>
     <param name="host" value="192.168.0.243"/>
   </node>
   <node pkg="rosbag" type="record" name="snmp_wifi" args="-o $(find snmp_diag)/logs/snmp_wifi --split --duration=1h /diagnostics" />
