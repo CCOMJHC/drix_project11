@@ -12,9 +12,10 @@
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <depend>roscpp</depend>
   <depend>drix_msgs</depend>
   <depend>project11_msgs</depend>
   <depend>project11</depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
   
 </package>

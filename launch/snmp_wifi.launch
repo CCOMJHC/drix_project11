@@ -1,48 +1,52 @@
 <launch>
-  
-  <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_240">
-    <param name="host" value="192.168.0.240"/>
-    <param name="root_oid" value="1.3.6.1.2.1.31"/>
-    <param name="name" value="wifi-mothership-240"/>
-  </node>
-  <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_240_moxa">
-    <param name="host" value="192.168.0.240"/>
-    <param name="root_oid" value="1.3.6.1.4.1.8691.15.33.1.11"/>
-    <param name="name" value="wifi-mothership-moxa-240"/>
-  </node>
+  <arg name="namespace" default="project11/operator"/>
 
-  <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_8_241">
-    <param name="host" value="192.168.8.241"/>
-    <param name="root_oid" value="1.3.6.1.2.1.31"/>
-    <param name="name" value="wifi-drix8-241"/>
-  </node>
-  <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_8_241_moxa">
-    <param name="host" value="192.168.8.241"/>
-    <param name="root_oid" value="1.3.6.1.4.1.8691.15.33.1.11"/>
-    <param name="name" value="wifi-drix8-moxa-241"/>
-  </node>
+  <group ns=ns="$(arg namespace)">
 
-  <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_242">
-    <param name="host" value="192.168.0.242"/>
-    <param name="root_oid" value="1.3.6.1.2.1.31"/>
-    <param name="name" value="wifi-uds-242"/>
-  </node>
-  <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_8_242_moxa">
-    <param name="host" value="192.168.0.242"/>
-    <param name="root_oid" value="1.3.6.1.4.1.8691.15.33.1.11"/>
-    <param name="name" value="wifi-uds-moxa-242"/>
-  </node>
+    <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_240">
+      <param name="host" value="192.168.0.240"/>
+      <param name="root_oid" value="1.3.6.1.2.1.31"/>
+      <param name="name" value="wifi-mothership-240"/>
+    </node>
+    <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_240_moxa">
+      <param name="host" value="192.168.0.240"/>
+      <param name="root_oid" value="1.3.6.1.4.1.8691.15.33.1.11"/>
+      <param name="name" value="wifi-mothership-moxa-240"/>
+    </node>
 
-  <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_243">
-    <param name="host" value="192.168.0.243"/>
-    <param name="root_oid" value="1.3.6.1.2.1.31"/>
-    <param name="name" value="wifi-mothership-243"/>
-  </node>
-  <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_243_moxa">
-    <param name="host" value="192.168.0.243"/>
-    <param name="root_oid" value="1.3.6.1.4.1.8691.15.33.1.11"/>
-    <param name="name" value="wifi-mothership-moxa-243"/>
-  </node>
+    <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_8_241">
+      <param name="host" value="192.168.8.241"/>
+      <param name="root_oid" value="1.3.6.1.2.1.31"/>
+      <param name="name" value="wifi-drix8-241"/>
+    </node>
+    <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_8_241_moxa">
+      <param name="host" value="192.168.8.241"/>
+      <param name="root_oid" value="1.3.6.1.4.1.8691.15.33.1.11"/>
+      <param name="name" value="wifi-drix8-moxa-241"/>
+    </node>
 
-  <node pkg="rosbag" type="record" name="snmp_wifi" args="-o $(find snmp_diag)/logs/snmp_wifi --split --duration=1h --lz4 /diagnostics" />
+    <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_242">
+      <param name="host" value="192.168.0.242"/>
+      <param name="root_oid" value="1.3.6.1.2.1.31"/>
+      <param name="name" value="wifi-uds-242"/>
+    </node>
+    <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_8_242_moxa">
+      <param name="host" value="192.168.0.242"/>
+      <param name="root_oid" value="1.3.6.1.4.1.8691.15.33.1.11"/>
+      <param name="name" value="wifi-uds-moxa-242"/>
+    </node>
+
+    <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_243">
+      <param name="host" value="192.168.0.243"/>
+      <param name="root_oid" value="1.3.6.1.2.1.31"/>
+      <param name="name" value="wifi-mothership-243"/>
+    </node>
+    <node pkg="snmp_diag" type="snmp_diag_node" name="snmp_wifi_0_243_moxa">
+      <param name="host" value="192.168.0.243"/>
+      <param name="root_oid" value="1.3.6.1.4.1.8691.15.33.1.11"/>
+      <param name="name" value="wifi-mothership-moxa-243"/>
+    </node>
+
+    <node pkg="rosbag" type="record" name="snmp_wifi" args="-o $(find snmp_diag)/logs/snmp_wifi --split --duration=1h --lz4 /diagnostics" />
+  </group>
 </launch>

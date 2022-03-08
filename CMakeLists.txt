@@ -6,7 +6,11 @@ find_package(catkin REQUIRED
   project11
   project11_msgs
   roscpp
+  rospy
 )
+
+catkin_python_setup()
+
 
 catkin_package(
   CATKIN_DEPENDS roscpp project11 project11_msgs
