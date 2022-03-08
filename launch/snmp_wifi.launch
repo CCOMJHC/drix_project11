@@ -47,6 +47,8 @@
       <param name="name" value="wifi-mothership-moxa-243"/>
     </node>
 
+    <node pkg="drix_project11" type="wifi_rates.py" name="wifi_rates"/>
+
     <node pkg="rosbag" type="record" name="snmp_wifi" args="-o $(find snmp_diag)/logs/snmp_wifi --split --duration=1h --lz4 /diagnostics" />
   </group>
 </launch>
