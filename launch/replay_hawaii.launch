@@ -1,0 +1,23 @@
+<launch>
+  <arg name="drixNumber" default="8"/>
+  <arg name="backgroundChart" default="$(find camp)/workspace/BSB_ROOT/19340/19340_1.KAP"/>
+  
+  <param name="/use_sim_time" type="bool" value="true"/>
+  
+  <include file="$(find drix_project11)/launch/robobox_interface.launch"/>
+
+  <include file="$(find drix_project11)/launch/drix_core.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="enableBridge" value="false"/>
+  </include>
+
+  <include file="$(find drix_project11)/launch/operator_core.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="enableBridge" value="false"/>
+  </include>
+
+  <include file="$(find drix_project11)/launch/operator_ui.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="backgroundChart" value="$(arg backgroundChart)"/>
+  </include>
+</launch>

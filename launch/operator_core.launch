@@ -2,12 +2,20 @@
   <arg name="namespace" default="project11/operator"/>
   <arg name="drixNumber"/>
   <arg name="robotNamespace" default="project11/drix_$(arg drixNumber)"/>
+  <arg name="enableBridge" default="true"/>
 
   <include file="$(find project11)/launch/operator_core.launch">
     <arg name="operatorJoystick" value="1"/>
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="robotNamespace" value="$(arg robotNamespace)"/>
+    <arg name="enableBridge" value="$(arg enableBridge)"/>
   </include>
+
+  <include file="$(find drix_description)/launch/load.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="namespace" value="$(arg robotNamespace)"/>
+  </include>
+
 
   <rosparam command="load" file="$(find drix_project11)/config/drix_operator.yaml" ns="$(arg namespace)"/>
 

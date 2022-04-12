@@ -1,0 +1,45 @@
+<launch>
+  <arg name="drixNumber"/>
+  <arg name="namespace" default="project11/drix_$(arg drixNumber)"/> 
+  <arg name="localPort" default="4200"/>
+  <arg name="operator_ip" default="192.168.$(arg drixNumber).180"/>
+  <arg name="enableBridge" default="true"/>
+
+
+  <include file="$(find project11)/launch/robot_core.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="enableBridge" value="$(arg enableBridge)"/>
+  </include>
+
+
+  <node pkg="drix_helm" type="drix_helm_node" name="drix_helm" ns="$(arg namespace)">
+    <param name="frame_id" value="$(arg namespace)/base_link"/>
+  </node>
+
+  <node pkg="ixblue_phins_adapter" type="ixblue_phins_adapter_node" name="phins_adaptor" ns="$(arg namespace)">
+    <param name="frame_id" value="$(arg namespace)/base_link"/>
+  </node>
+
+  <node pkg="drix_helm" type="ais_to_udp" name="ais_to_udp" ns="$(arg namespace)">
+  </node>
+
+  <node pkg="ais" type="ais_node.py" name="ais_node" ns="$(arg namespace)">
+    <param name="input_type" value="udp"/>
+    <param name="input_port" value="4010"/>
+    <remap from="ais/position" to="nav/ais/position"/>
+    <remap from="ais/orientation" to="nav/ais/orientation"/>
+    <remap from="ais/velocity" to="nav/ais/velocity"/>
+  </node>
+
+  <include file="$(find drix_project11)/launch/usbl.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="namespace" value="$(arg namespace)"/>
+  </include>
+
+  <rosparam command="load" file="$(find drix_project11)/config/drix.yaml" ns="$(arg namespace)"/>
+  <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>
+  <param name="/$(arg namespace)/hover_action/minimum_distance" value="15"/>
+  <param name="/$(arg namespace)/hover_action/maximum_distance" value="30"/>
+  <param name="/$(arg namespace)/mission_manager/waypoint_threshold" value="15"/>
+
+</launch>
