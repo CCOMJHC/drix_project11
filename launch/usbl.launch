@@ -11,4 +11,6 @@
     <param name="connection/input_port" value="50011"/>
     <param name="connection/output_port" value="50010"/>
   </node>
+
+  <node pkg="sonardyne_sounder" type="sounder_node.py" name="usbl_raw" ns="$(arg namespace)"/>
 </launch>
