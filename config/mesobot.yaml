@@ -1,8 +1,8 @@
 udp_bridge/remotes:
     operator:
         topics:
-          usbl_2001_position: {source: usbl/positions/2001}
-          usbl_2211_position: {source: usbl/positions/2211}
-          usbl_2712_position: {source: usbl/positions/2712}
+          usbl_2001_position: {source: usbl_ranger/positions/2001}
+          usbl_2509_position: {source: usbl_ranger/positions/2509}
+          usbl_2712_position: {source: usbl_ranger/positions/2712}
           mesobot_heartbeat: {source: /project11/mesobot/project11/heartbeat}
           mesobot_position: {source: /project11/mesobot/nav/position}
