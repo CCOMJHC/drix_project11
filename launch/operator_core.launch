@@ -17,7 +17,15 @@
   </include>
 
 
+  <node pkg="mru_transform" type="mru_transform_node" name="mru_transform" ns="$(arg robotNamespace)">
+    <param name="base_frame" value="$(arg robotNamespace)/base_link"/>
+    <param name="map_frame" value="$(arg robotNamespace)/map"/>
+    <param name="odom_frame" value="$(arg robotNamespace)/odom"/>
+  </node>
+
+
   <rosparam command="load" file="$(find drix_project11)/config/drix_operator.yaml" ns="$(arg namespace)"/>
+  <rosparam command="load" file="$(find drix_project11)/config/drix_operator_robot.yaml" ns="$(arg robotNamespace)"/>
 
   <rosparam param="udp_bridge/remotes/robot/host" ns="$(arg namespace)" subst_value="True">"192.168.$(arg drixNumber).180"</rosparam>
 
