@@ -16,6 +16,10 @@
     <arg name="namespace" value="$(arg robotNamespace)"/>
   </include>
 
+  <include file="$(find drix_description)/launch/publish_state.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="namespace" value="$(arg robotNamespace)"/>
+  </include>
 
   <node pkg="mru_transform" type="mru_transform_node" name="mru_transform" ns="$(arg robotNamespace)">
     <param name="base_frame" value="$(arg robotNamespace)/base_link"/>
