@@ -1,0 +1,5 @@
+udp_bridge/remotes:
+    operator:
+        topics:
+          usbl_5501_position: {source: usbl_ranger/positions/5501}
+          nui_position: {source: /project11/nui/nav/position}

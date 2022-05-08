@@ -42,4 +42,6 @@
   <param name="/$(arg namespace)/hover_action/maximum_distance" value="30"/>
   <param name="/$(arg namespace)/mission_manager/waypoint_threshold" value="15"/>
 
+  <rosparam file="$(find drix_project11)/config/navigator.yaml" command="load" ns="$(arg namespace)/navigator"/>
+
 </launch>

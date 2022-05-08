@@ -1,0 +1,15 @@
+robot:
+  max_velocity:
+    linear/x: 12.0
+
+  default_velocity:
+    linear/x: 8.0
+
+  turn_radius: 20.0
+
+TaskToTwistWorkflow/path_follower:
+  pid:
+    Kp: 6.0
+    Ki: 0.5
+    Kd: 0.6
+
