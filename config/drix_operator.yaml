@@ -1,1 +1,13 @@
 udp_bridge/remotes/robot/name: drix
+
+project11/platforms/drix_8:
+  robot_description: project11/drix_8/robot_description
+  namespace: project11/drix_8
+  width: 0.85
+  length: 7.7
+  reference_x: 0.65
+  nav_sources:
+    combined:
+      position_topic: /project11/drix_8/project11/nav/position
+      orientation_topic: /project11/drix_8/project11/nav/orientation
+      velocity_topic: /project11/drix_8/project11/nav/velocity

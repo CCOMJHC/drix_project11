@@ -6,18 +6,20 @@
   
   <include file="$(find drix_project11)/launch/robobox_interface.launch"/>
 
-  <include file="$(find drix_project11)/launch/drix_core.launch">
+  <!-- <include file="$(find drix_project11)/launch/drix_core.launch">
     <arg name="drixNumber" value="$(arg drixNumber)"/>
     <arg name="enableBridge" value="false"/>
-  </include>
+  </include> -->
 
   <include file="$(find drix_project11)/launch/operator_core.launch">
     <arg name="drixNumber" value="$(arg drixNumber)"/>
     <arg name="enableBridge" value="false"/>
+    <arg name="enableTransforms" value="true"/>
   </include>
 
   <include file="$(find drix_project11)/launch/operator_ui.launch">
     <arg name="drixNumber" value="$(arg drixNumber)"/>
     <arg name="backgroundChart" value="$(arg backgroundChart)"/>
   </include>
+
 </launch>
