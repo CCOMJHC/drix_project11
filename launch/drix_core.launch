@@ -23,6 +23,9 @@
   <node pkg="drix_helm" type="ais_to_udp" name="ais_to_udp" ns="$(arg namespace)">
   </node>
 
+  <node pkg="drix_helm" type="range_to_mothership" name="range_bearing" ns="$(arg namespace)">
+  </node>
+
   <node pkg="ais" type="ais_node.py" name="ais_node" ns="$(arg namespace)">
     <param name="input_type" value="udp"/>
     <param name="input_port" value="4010"/>
