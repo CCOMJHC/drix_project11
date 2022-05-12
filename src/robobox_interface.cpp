@@ -45,6 +45,10 @@ public:
       m_platform.length = 7.7;
       m_platform.width = 0.85;
       m_platform.reference_x = (m_platform.length/2.0)-3.2; // bow is 3.2m from phins ref
+      m_platform.color.r = 1.0;
+      m_platform.color.g = 0.0;
+      m_platform.color.b = 0.0;
+      m_platform.color.a = 1.0;
     }
     m_update_time = ros::Time::now();
   }
@@ -66,6 +70,10 @@ public:
       m_platform.nav_sources.push_back(nav);
       m_platform.length = 8.3;
       m_platform.width = 2.51;
+      m_platform.color.r = 0.5;
+      m_platform.color.g = 0.5;
+      m_platform.color.b = 0.5;
+      m_platform.color.a = 1.0;
     }
     m_update_time = ros::Time::now();
   }
@@ -153,7 +161,11 @@ void mothershipGpsCallback(const mdt_msgs::Gps::ConstPtr& data)
     nav.orientation_topic = "/project11/robobox/mothership/orientation";
     mothership_orientation_pub = n.advertise<sensor_msgs::Imu>(nav.orientation_topic, 1);
     mothership_platform.nav_sources.push_back(nav);
-    mothership_platform.name = "mothership";   
+    mothership_platform.name = "mothership";
+    mothership_platform.color.r = 0.0;
+    mothership_platform.color.g = 0.0;
+    mothership_platform.color.b = 1.0;
+    mothership_platform.color.a = 1.0;
   }
 
   sensor_msgs::NavSatFix nsf;
