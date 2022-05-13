@@ -10,6 +10,9 @@
   <arg name="mesobot_address" default="2509"/>
   <arg name="mesobot_backup_address" default="2712"/>
 
+  <arg name="nui_address" default="5501"/>
+  <arg name="nui_backup_address" default="2411"/>
+
   <include file="$(find drix_project11)/launch/drix_core.launch">
     <arg name="drixNumber" value="$(arg drixNumber)"/>
     <arg name="namespace" value="$(arg namespace)"/>
