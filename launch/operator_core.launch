@@ -3,6 +3,7 @@
   <arg name="drixNumber"/>
   <arg name="robotNamespace" default="project11/drix_$(arg drixNumber)"/>
   <arg name="enableBridge" default="true"/>
+  <arg name="enableTransforms" default="true"/>
 
   <include file="$(find project11)/launch/operator_core.launch">
     <arg name="operatorJoystick" value="1"/>
@@ -21,12 +22,15 @@
     <arg name="namespace" value="$(arg robotNamespace)"/>
   </include>
 
-  <node pkg="mru_transform" type="mru_transform_node" name="mru_transform" ns="$(arg robotNamespace)">
+  <node if="$(arg enableTransforms)" pkg="mru_transform" type="mru_transform_node" name="mru_transform" ns="$(arg robotNamespace)">
     <param name="base_frame" value="$(arg robotNamespace)/base_link"/>
     <param name="map_frame" value="$(arg robotNamespace)/map"/>
     <param name="odom_frame" value="$(arg robotNamespace)/odom"/>
   </node>
 
+  <node pkg="drix_helm" type="range_to_drix" name="range_bearing" ns="$(arg namespace)">
+    <param name="drixNumber" value="$(arg drixNumber)"/>
+  </node>
 
   <rosparam command="load" file="$(find drix_project11)/config/drix_operator.yaml" ns="$(arg namespace)"/>
   <rosparam command="load" file="$(find drix_project11)/config/drix_operator_robot.yaml" ns="$(arg robotNamespace)"/>
