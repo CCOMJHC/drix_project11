@@ -18,5 +18,7 @@
     <arg name="backgroundChart" value="$(arg backgroundChart)"/>
     <arg name="rqt" value="$(arg rqt)"/>
     <arg name="dual_camp" value="$(arg dual_camp)"/>
+    <arg name="range_topic" value="to_drix_$(arg drixNumber)/range"/>
+    <arg name="bearing_topic" value="to_drix_$(arg drixNumber)/bearing"/>
   </include>
 </launch>

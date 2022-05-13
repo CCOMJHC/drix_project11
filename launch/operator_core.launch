@@ -4,6 +4,7 @@
   <arg name="robotNamespace" default="project11/drix_$(arg drixNumber)"/>
   <arg name="enableBridge" default="true"/>
   <arg name="enableTransforms" default="true"/>
+  <arg name="logDirectory" default="/var/null"/>
 
   <include file="$(find project11)/launch/operator_core.launch">
     <arg name="operatorJoystick" value="1"/>
@@ -39,6 +40,7 @@
 
   <rosparam param="udp_bridge/remotes/robot/name" ns="$(arg namespace)" subst_value="True">"$(arg robotNamespace)"</rosparam>
 
-  <rosparam param="udp_bridge/remotes/robot/topics/piloting_mode_manual_helm/source" ns="$(arg namespace)" subst_value="True">"/$(arg robotNamespace)/project11/piloting_mode/manual/helm"</rosparam>
+  <rosparam param="udp_bridge/remotes/robot/topics/usbl_modem_send_raw/source" ns="$(arg namespace)" subst_value="True">"/$(arg robotNamespace)/project11/usbl_modem/send_raw"</rosparam>
 
+  <node pkg="rosbag" type="record" name="project11_operator_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/project11_operator --split --duration=10m --lz4 -e &quot;/project11/(.*)&quot;"/>
 </launch>
