@@ -7,10 +7,14 @@
   <arg name="dual_camp" default="false"/>
   <arg name="usbl" default="false"/>
   <arg name="mesobot" default="false"/>
+  <arg name="nui" default="false"/>
 
   <rosparam if="$(arg usbl)" command="load" file="$(find drix_project11)/config/usbl_operator.yaml" ns="$(arg namespace)"/>
 
   <rosparam if="$(arg mesobot)" command="load" file="$(find mesobot_project11)/config/mesobot_operator.yaml" ns="$(arg namespace)"/>
+
+  <rosparam if="$(arg nui)" command="load" file="$(find nui_project11)/config/nui_operator.yaml" ns="$(arg namespace)"/>
+
 
   <include file="$(find project11)/launch/operator_ui.launch">
     <arg name="namespace" value="$(arg namespace)"/>
