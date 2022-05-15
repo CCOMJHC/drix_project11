@@ -10,6 +10,6 @@ robot:
 TaskToTwistWorkflow/path_follower:
   pid:
     Kp: 1.0
-    Ki: 0.5
-    Kd: 0.2
+    Ki: 0.45
+    Kd: 0.4
 
