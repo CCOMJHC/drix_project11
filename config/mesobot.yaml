@@ -10,3 +10,6 @@ udp_bridge/remotes:
           mesobot_depth: {source: /project11/mesobot/depth}
           mesobot_battery: {source: /project11/mesobot/battery}
           mesobot_radiometer: {source: /project11/mesobot/radiometer}
+          mesobot_ctd_c: {source: /project11/mesobot/ctd/c}
+          mesobot_ctd_t: {source: /project11/mesobot/ctd/t}
+          mesobot_ctd_d: {source: /project11/mesobot/ctd/d}

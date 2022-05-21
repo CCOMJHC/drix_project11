@@ -27,6 +27,10 @@
     <remap from="backup_position" to="/$(arg namespace)/usbl_ranger/positions/$(arg mesobot_backup_address)"/>
   </node>
   <rosparam command="load" file="$(find drix_project11)/config/mesobot.yaml" ns="$(arg namespace)"/>
+  <node pkg="mesobot_project11" type="ctd.py" name="ctd" ns="$(arg mesobot_namespace)">
+    <remap from="raw" to="/$(arg namespace)/usbl_modem/raw"/>
+    <remap from="send_sms" to="/$(arg namespace)/usbl_modem/send_sms"/>
+  </node>
 
   <node pkg="nui_project11" type="nui_node.py" name="nui" ns="$(arg nui_namespace)">
     <remap from="sms" to="/$(arg namespace)/usbl_modem/received_sms"/>
