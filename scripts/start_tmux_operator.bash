@@ -30,7 +30,7 @@ export ROS_IP=$ROBOBOX_ROS_IP
 /usr/bin/tmux new -d -s project11
 /usr/bin/tmux send-keys -t project11 "source /home/field/.bashrc" C-m
 /usr/bin/tmux send-keys -t project11 "source /home/field/project11/catkin_ws/src/drix_project11/scripts/robobox_as_core.bash" C-m
-/usr/bin/tmux send-keys -t project11 "rosrun rosmon rosmon --name=rosmon_p11_operator_core drix_project11 operator_core.launch drixNumber:=8 logDirectory:=${LOGDIR}" C-m
+/usr/bin/tmux send-keys -t project11 "rosrun rosmon_core rosmon --name=rosmon_p11_operator_core drix_project11 operator_core.launch drixNumber:=8 logDirectory:=${LOGDIR}" C-m
 #tmux a -t project11
 
 set +x
