@@ -23,4 +23,4 @@ export ROS_IP=192.168.8.180
 #open a new tmux session, source the ros master, and run the drix.launch file to startup the backset project 11
 
 /usr/bin/tmux new -d -s project11
-/usr/bin/tmux send-keys -t project11 "rosrun rosmon rosmon --name=rosmon_project11 drix_project11 drix.launch drixNumber:=8 operator_ip:=snowpetreld logDirectory:=${LOGDIR}" C-m
+/usr/bin/tmux send-keys -t project11 "rosrun rosmon rosmon --name=rosmon_project11 drix_project11 drix.launch drixNumber:=8 operator_ip:=robopi logDirectory:=${LOGDIR}" C-m
