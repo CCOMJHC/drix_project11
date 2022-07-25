@@ -5,9 +5,10 @@
   <arg name="enableBridge" default="true"/>
   <arg name="enableTransforms" default="true"/>
   <arg name="logDirectory" default="/var/null"/>
+  <arg name="operatorJoystick" default="false"/>
 
   <include file="$(find project11)/launch/operator_core.launch">
-    <arg name="operatorJoystick" value="1"/>
+    <arg name="operatorJoystick" value="$(arg operatorJoystick)"/>
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="robotNamespace" value="$(arg robotNamespace)"/>
     <arg name="enableBridge" value="$(arg enableBridge)"/>
