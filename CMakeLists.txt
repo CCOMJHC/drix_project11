@@ -5,6 +5,7 @@ find_package(catkin REQUIRED
   drix_msgs
   project11
   project11_msgs
+  rosbag
   roscpp
   rospy
 )
@@ -13,7 +14,7 @@ catkin_python_setup()
 
 
 catkin_package(
-  CATKIN_DEPENDS roscpp project11 project11_msgs
+  CATKIN_DEPENDS project11 project11_msgs rosbag roscpp
 )
 
 include_directories(
@@ -32,3 +33,7 @@ add_dependencies(geopoint_to_asv ${catkin_EXPORTED_TARGETS})
 add_executable(geopose_to_asv src/geopose_to_asv.cpp)
 target_link_libraries(geopose_to_asv ${catkin_LIBRARIES})
 add_dependencies(geopose_to_asv ${catkin_EXPORTED_TARGETS})
+
+add_executable(robobox_bag_to_project11 src/robobox_bag_to_project11.cpp)
+target_link_libraries(robobox_bag_to_project11 ${catkin_LIBRARIES})
+add_dependencies(robobox_bag_to_project11 ${catkin_EXPORTED_TARGETS})
