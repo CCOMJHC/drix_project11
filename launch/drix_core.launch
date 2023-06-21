@@ -40,7 +40,7 @@
   </include>
 
   <rosparam command="load" file="$(find drix_project11)/config/drix.yaml" ns="$(arg namespace)"/>
-  <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>
+  <param name="/$(arg namespace)/udp_bridge/remotes/operator/connections/default/host" value="$(arg operator_ip)"/>
   <param name="/$(arg namespace)/hover_action/minimum_distance" value="15"/>
   <param name="/$(arg namespace)/hover_action/maximum_distance" value="30"/>
   <param name="/$(arg namespace)/mission_manager/waypoint_threshold" value="15"/>

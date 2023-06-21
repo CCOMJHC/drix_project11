@@ -7,7 +7,9 @@ mru_transform/sensors:
    topics: { position: 'project11/nav/ais/position', orientation: 'project11/nav/ais/orientation', velocity: 'project11/nav/ais/velocity'}
 
 udp_bridge/remotes:
-    operator:
+  operator:
+    connections:
+      default:
         topics:
           sensors_ais_contact: {source: project11/ais/contact}
           diagnostics: {source: ''}

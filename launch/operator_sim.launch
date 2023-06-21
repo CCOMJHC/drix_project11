@@ -10,5 +10,5 @@
     <arg name="drixNumber" value="$(arg drixNumber)"/>
   </include>
 
-  <rosparam param="udp_bridge/remotes/robot/host" ns="$(arg namespace)" subst_value="True">"172.16.0.1"</rosparam>
+  <rosparam param="udp_bridge/remotes/robot/connections/default/host" ns="$(arg namespace)" subst_value="True">"172.16.0.1"</rosparam>
 </launch>
