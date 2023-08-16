@@ -1,6 +1,11 @@
 <launch>
   <arg name="drixNumber" default="8"/>
   <arg name="backgroundChart" default="$(find camp)/workspace/BSB_ROOT/19340/19340_1.KAP"/>
+  <arg name="mesobot" default="false"/>
+  <arg name="nui" default="false"/>
+  <arg name="bagFile"/>
+  <arg name="delay" default="15"/>
+  <arg name="startTime" default="0"/>
   
   <param name="/use_sim_time" type="bool" value="true"/>
   
@@ -20,6 +25,12 @@
   <include file="$(find drix_project11)/launch/operator_ui.launch">
     <arg name="drixNumber" value="$(arg drixNumber)"/>
     <arg name="backgroundChart" value="$(arg backgroundChart)"/>
+    <arg name="mesobot" value="$(arg mesobot)"/>
+    <arg name="nui" value="$(arg nui)"/>
   </include>
+
+  <node pkg="rosbag" type="play" name="bagplay" args="--clock --delay=$(arg delay) --start=$(arg startTime) --loop $(arg bagFile)">
+    <remap from="clock" to="/clock"/>
+  </node>
 
 </launch>

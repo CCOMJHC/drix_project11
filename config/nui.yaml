@@ -1,5 +1,7 @@
 udp_bridge/remotes:
-    operator:
+  operator:
+    connections:
+      default:
         topics:
           usbl_5501_position: {source: usbl_ranger/positions/5501}
           usbl_2411_position: {source: usbl_ranger/positions/2411}

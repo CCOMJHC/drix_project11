@@ -8,7 +8,7 @@
     <arg name="localPort" value="$(arg localPort)"/>
     <arg name="drixNumber" value="$(arg drixNumber)"/>
     <arg name="logDirectory" value="/dev/null"/>
+    <arg name="operator_ip" value="172.16.0.1"/>
+    <arg name="operator_port" value="4201"/>
   </include>
-
-  <rosparam param="udp_bridge/remotes/operator/host" ns="$(arg namespace)">"172.16.0.1"</rosparam>
 </launch>

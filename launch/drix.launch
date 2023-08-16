@@ -3,6 +3,7 @@
   <arg name="namespace" default="project11/drix_$(arg drixNumber)"/> 
   <arg name="localPort" default="4200"/>
   <arg name="operator_ip" default="192.168.$(arg drixNumber).180"/>
+  <arg name="operator_port" default="4200"/>
   <arg name="mesobot_namespace" default="project11/mesobot"/>
   <arg name="nui_namespace" default="project11/nui"/>
   <arg name="logDirectory"/>
@@ -19,6 +20,7 @@
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="localPort" value="$(arg localPort)"/>
     <arg name="operator_ip" value="$(arg operator_ip)"/>
+    <arg name="operator_port" value="$(arg operator_port)"/>
   </include>
 
   <node pkg="mesobot_project11" type="mesobot_node.py" name="mesobot" ns="$(arg mesobot_namespace)">
