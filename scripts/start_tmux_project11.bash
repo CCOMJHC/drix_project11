@@ -8,9 +8,9 @@ LOGDIR="/home/field/project11/log/${DAY}"
 mkdir -p "$LOGDIR"
 LOG_FILE="${LOGDIR}/autostart_${NOW}.txt"
 
-while ! ping -c 1 -W 1 mdt; do
-	sleep 1
-done
+#while ! ping -c 1 -W 1 mdt; do
+#	sleep 1
+#done
 
 sleep 5
 

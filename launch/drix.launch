@@ -34,23 +34,23 @@
     <remap from="send_sms" to="/$(arg namespace)/usbl_modem/send_sms"/>
   </node>
 
-  <node pkg="nui_project11" type="nui_node.py" name="nui" ns="$(arg nui_namespace)">
+  <!-- <node pkg="nui_project11" type="nui_node.py" name="nui" ns="$(arg nui_namespace)">
     <remap from="sms" to="/$(arg namespace)/usbl_modem/received_sms"/>
     <remap from="position" to="/$(arg namespace)/usbl_ranger/positions/$(arg nui_address)"/>
     <remap from="backup_position" to="/$(arg namespace)/usbl_ranger/positions/$(arg nui_backup_address)"/>
-  </node>
-  <rosparam command="load" file="$(find drix_project11)/config/nui.yaml" ns="$(arg namespace)"/>
+  </node> -->
+  <!-- <rosparam command="load" file="$(find drix_project11)/config/nui.yaml" ns="$(arg namespace)"/>
   <node pkg="nui_project11" type="udp_to_string.py" name="nui_telegrams" ns="$(arg namespace)">
     <remap from="output" to="usbl/telegrams"/>
-  </node>
+  </node> -->
 
   <node pkg="drix_project11" type="geopose_to_asv" name="geopose_to_asv" ns="$(arg mesobot_namespace)">
     <remap from="input" to="nav/position"/>
   </node>
 
-  <node pkg="drix_project11" type="geopose_to_asv" name="geopose_to_asv" ns="$(arg nui_namespace)">
+  <!-- <node pkg="drix_project11" type="geopose_to_asv" name="geopose_to_asv" ns="$(arg nui_namespace)">
     <remap from="input" to="nav/position"/>
-  </node>
+  </node> -->
 
   <node pkg="rosbag" type="record" name="project11_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/project11 --split --duration=10m --lz4 -e &quot;/project11/(.*)&quot;"/>
 </launch>
