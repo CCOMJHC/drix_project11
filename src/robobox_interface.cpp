@@ -196,7 +196,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "robobox_interface");
   ros::NodeHandle n;
 
-  platforms_pub = n.advertise<project11_msgs::PlatformList>("project11/platforms", 1);
+  platforms_pub = n.advertise<project11_msgs::PlatformList>("platforms", 1);
 
   ros::Subscriber drix_network_info_sub = n.subscribe("/bridge_comm_masters/network_info", 1, drixNetworkInfoCallback);
   ros::Subscriber launcher_description_sub = n.subscribe("/launchers/list", 1, launcherDescriptionCallback);
