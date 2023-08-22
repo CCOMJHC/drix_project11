@@ -5,6 +5,7 @@
   <arg name="enableBridge" default="true"/>
   <arg name="bridgePort" default="4200"/>
   <arg name="robotBridgeName" default="drix_$(arg drixNumber)"/>
+  <arg name="robotHost" default="echodw"/>
   <arg name="enableTransforms" default="true"/>
   <arg name="logDirectory" default="/dev/null"/>
   <arg name="operatorJoystick" default="false"/>
@@ -39,9 +40,8 @@
   </node>
 
   <rosparam command="load" file="$(find drix_project11)/config/drix_operator.yaml" ns="$(arg namespace)"/>
-  <rosparam command="load" file="$(find drix_project11)/config/drix_operator_robot.yaml" ns="$(arg robotNamespace)"/>
 
-  <rosparam param="udp_bridge/remotes/robot/connections/default/host" ns="$(arg namespace)" subst_value="True">"192.168.$(arg drixNumber).180"</rosparam>
+  <rosparam param="udp_bridge/remotes/robot/connections/default/host" ns="$(arg namespace)" subst_value="True">"$(arg robotHost)"</rosparam>
 
   <rosparam param="udp_bridge/remotes/robot/topics/usbl_modem_send_raw/source" ns="$(arg namespace)" subst_value="True">"/$(arg robotNamespace)/usbl_modem/send_raw"</rosparam>
 

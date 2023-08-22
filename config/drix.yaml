@@ -6,16 +6,18 @@ mru_transform/sensors:
  - name: ais
    topics: { position: 'project11/nav/ais/position', orientation: 'project11/nav/ais/orientation', velocity: 'project11/nav/ais/velocity'}
 
-udp_bridge/remotes:
-  operator:
-    connections:
-      default:
-        topics:
-          sensors_ais_contact: {source: project11/ais/contact}
-          diagnostics: {source: ''}
-          tf: {source: ''}
-          tf_static: {source: ''}
-          usbl_raw_audio: {source: usbl_raw/audio}
-          usbl_raw_audio_info: {source: usbl_raw/audio_info}
-          usbl_modem_raw: {source: usbl_modem/raw}
+udp_bridge:
+  maxPacketSize: 1450
+  remotes:
+    operator:
+      connections:
+        default:
+          topics:
+            sensors_ais_contact: {source: project11/ais/contact}
+            diagnostics: {source: ''}
+            tf: {source: ''}
+            tf_static: {source: ''}
+            usbl_raw_audio: {source: usbl_raw/audio}
+            usbl_raw_audio_info: {source: usbl_raw/audio_info}
+            usbl_modem_raw: {source: usbl_modem/raw}
           

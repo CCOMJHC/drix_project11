@@ -1,3 +1,0 @@
-mru_transform/sensors:
- - name: active
-   topics: { position: 'project11/nav/position', orientation: 'project11/nav/orientation', velocity: 'project11/nav/velocity'}
