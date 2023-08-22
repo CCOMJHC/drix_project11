@@ -2,8 +2,13 @@ mru_transform/sensors:
  - name: active
    topics: { position: 'project11/nav/position', orientation: 'project11/nav/orientation', velocity: 'project11/nav/velocity'}
 
-udp_bridge/maxPacketSize: 1450
-#udp_bridge/remotes/robot/name: drix
+udp_bridge:
+  maxPacketSize: 1450
+  remotes:
+    robot:
+      connections:
+        default:
+          port: 4201  # Teltonika would not forward 4200, but 4201 works.
 
 # project11/platforms/drix_8:
 #   robot_description: project11/drix_8/robot_description
