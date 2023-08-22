@@ -32,7 +32,7 @@ public:
     if(!m_gps_sub)
     {
       ros::NodeHandle n;
-      m_gps_sub = n.subscribe("/"+data.drix_name+"/light_gps", 1, &Platform::gpsCallback, this);
+      m_gps_sub = n.subscribe("/"+data.drix_name+"/comms/topic_simplifier/light_gps", 1, &Platform::gpsCallback, this);
       project11_msgs::NavSource nav;
       nav.name = "robobox";
       nav.position_topic = "/project11/robobox/"+data.drix_name+"/position";
@@ -60,7 +60,7 @@ public:
     if(!m_gps_sub)
     {
       ros::NodeHandle n;
-      m_gps_sub = n.subscribe("/launchers/"+data.name+"/gps", 1, &Platform::gpsCallback, this);
+      m_gps_sub = n.subscribe("/launcher/"+data.name+"/gps", 1, &Platform::gpsCallback, this);
       project11_msgs::NavSource nav;
       nav.name = "robobox";
       nav.position_topic = "/project11/robobox/"+data.name+"/position";
@@ -198,10 +198,10 @@ int main(int argc, char **argv)
 
   platforms_pub = n.advertise<project11_msgs::PlatformList>("platforms", 1);
 
-  ros::Subscriber drix_network_info_sub = n.subscribe("/bridge_comm_masters/network_info", 1, drixNetworkInfoCallback);
-  ros::Subscriber launcher_description_sub = n.subscribe("/launchers/list", 1, launcherDescriptionCallback);
-  ros::Subscriber mothership_gps_sub = n.subscribe("/mothership_gps", 1, mothershipGpsCallback);
-  ros::Subscriber mothership_size_sub = n.subscribe("/mothership_size", 1, mothershipSizeCallback);
+  ros::Subscriber drix_network_info_sub = n.subscribe("/comms/bridge_comm_masters/network_info", 1, drixNetworkInfoCallback);
+  ros::Subscriber launcher_description_sub = n.subscribe("/launcher/launchers_manager/list", 1, launcherDescriptionCallback);
+  ros::Subscriber mothership_gps_sub = n.subscribe("/mothership/gps", 1, mothershipGpsCallback);
+  ros::Subscriber mothership_size_sub = n.subscribe("/lever_arms/mothership_cfg/mothership_size", 1, mothershipSizeCallback);
 
   ros::Timer timer = n.createTimer(ros::Duration(1.0), publishPlatforms);
   ros::spin();
