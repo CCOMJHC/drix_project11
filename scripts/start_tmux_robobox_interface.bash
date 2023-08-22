@@ -18,17 +18,13 @@ date
 echo "#############################################"
 echo ""
 
-source /home/field/.ros_project11_setup.bash
-
-set -v
+source /home/field/.ros_project11.bash
 
 export ROS_MASTER_URI=http://robobox:11311
 export ROS_IP=$ROBOBOX_ROS_IP
 
 /usr/bin/tmux new -d -s robobox
 /usr/bin/tmux send-keys -t robobox "rosrun rosmon rosmon --name=rosmon_p11_robobox drix_project11 robobox_interface.launch logDirectory:=${LOGDIR}" C-m
-
-#tmux a -t robobox
 
 set +x
 
