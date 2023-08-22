@@ -18,8 +18,7 @@ date
 echo "#############################################"
 echo ""
 
-source /opt/ros/noetic/setup.bash
-source /home/field/project11/catkin_ws/devel/setup.bash
+source /home/field/.ros_project11_setup.bash
 
 set -v
 
