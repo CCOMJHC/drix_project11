@@ -13,6 +13,9 @@ udp_bridge:
       connections:
         default:
           topics:
+            nav_orientation: {source: project11/phins/orientation}
+            nav_position: {source: project11/phins/position}
+            nav_velocity: {source: project11/phins/velocity}
             sensors_ais_contact: {source: sensors/ais/contacts}
             diagnostics: {source: ''}
             tf: {source: ''}
@@ -20,6 +23,36 @@ udp_bridge:
             usbl_raw_audio: {source: usbl_raw/audio}
             usbl_raw_audio_info: {source: usbl_raw/audio_info}
             usbl_modem_raw: {source: usbl_modem/raw}
+        vpn:
+          host: robonucdv
+          maximumBytesPerSecond: 200000
+          topics:
+            nav_orientation: {source: project11/phins/orientation}
+            nav_position: {source: project11/phins/position}
+            nav_velocity: {source: project11/phins/velocity}
+            platforms: {source: /project11/platforms}
+            project11_display: {source: project11/display}
+            project11_heartbeat: {source: project11/heartbeat}
+            project11_status_mission_manager: {source: project11/status/mission_manager}
+            project11_response: {source: project11/response}
+            odom: {source: project11/odom}
+
+project11/platforms/drix_8:
+  robot_description: project11/drix_8/robot_description
+  namespace: project11/drix_8
+  width: 0.85
+  length: 7.7
+  reference_x: 0.65
+  nav_sources:
+    phins:
+      position_topic: /project11/drix_8/project11/phins/position
+      orientation_topic: /project11/drix_8/project11/phins/orientation
+      velocity_topic: /project11/drix_8/project11/phins/velocity
+  color:
+    red: 1.0
+    green: 0.0
+    blue: 0.0
+
           
 s57_grids:
   map_frame: project11/drix_8/map

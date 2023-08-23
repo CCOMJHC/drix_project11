@@ -24,7 +24,11 @@
   <node pkg="drix_helm" type="range_to_mothership" name="range_bearing" ns="$(arg namespace)">
   </node>
 
-  <node pkg="s57_grids" type="s57_grids" name="s57_grids" ns="$(arg namespace)"/>
+  <group ns="$(arg namespace)">
+    <node pkg="s57_grids" type="s57_grids" name="s57_grids"/>
+
+    <node pkg="project11" type="platform_send.py" name="platform_sender"/>
+  </group>
 
   <group ns="$(arg namespace)/sensors/ais">
     <node pkg="marine_ais_tools" type="ais_parser.py" name="parser">

@@ -12,6 +12,12 @@ udp_bridge:
           topics:
             project11_command: {source: /project11/drix_8/project11/command}
             piloting_mode_manual_helm: {source: /project11/drix_8/project11/piloting_mode/manual/helm}
+        vpn:
+          host: echodv
+          port: 4201  # Teltonika would not forward 4200, but 4201 works.
+          topics:
+            project11_command: {source: /project11/drix_8/project11/command}
+            piloting_mode_manual_helm: {source: /project11/drix_8/project11/piloting_mode/manual/helm}
 
 # project11/platforms/drix_8:
 #   robot_description: project11/drix_8/robot_description
