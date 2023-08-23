@@ -13,9 +13,9 @@ udp_bridge:
       connections:
         default:
           topics:
-            nav_orientation: {source: project11/phins/orientation}
-            nav_position: {source: project11/phins/position}
-            nav_velocity: {source: project11/phins/velocity}
+            nav_orientation: {source: project11/nav/phins/orientation, period: .5}
+            nav_position: {source: project11/nav/phins/position, period: .5}
+            nav_velocity: {source: project11/nav/phins/velocity, period: .5}
             sensors_ais_contact: {source: sensors/ais/contacts}
             diagnostics: {source: ''}
             tf: {source: ''}
@@ -28,9 +28,9 @@ udp_bridge:
           port: 4200
           maximumBytesPerSecond: 200000
           topics:
-            nav_orientation: {source: project11/phins/orientation}
-            nav_position: {source: project11/phins/position}
-            nav_velocity: {source: project11/phins/velocity}
+            nav_orientation: {source: project11/nav/phins/orientation, period: .5}
+            nav_position: {source: project11/nav/phins/position, period: .5}
+            nav_velocity: {source: project11/nav/phins/velocity, period: .5}
             platforms: {source: /project11/platforms}
             project11_display: {source: project11/display}
             project11_heartbeat: {source: project11/heartbeat}
@@ -46,9 +46,9 @@ project11/platforms/drix_8:
   reference_x: 0.65
   nav_sources:
     phins:
-      position_topic: /project11/drix_8/project11/phins/position
-      orientation_topic: /project11/drix_8/project11/phins/orientation
-      velocity_topic: /project11/drix_8/project11/phins/velocity
+      position_topic: /project11/drix_8/project11/nav/phins/position
+      orientation_topic: /project11/drix_8/project11/nav/phins/orientation
+      velocity_topic: /project11/drix_8/project11/phins/nav/velocity
   color:
     red: 1.0
     green: 0.0
