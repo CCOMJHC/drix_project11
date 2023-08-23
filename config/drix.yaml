@@ -13,7 +13,7 @@ udp_bridge:
       connections:
         default:
           topics:
-            sensors_ais_contact: {source: project11/ais/contact}
+            sensors_ais_contact: {source: sensors/ais/contacts}
             diagnostics: {source: ''}
             tf: {source: ''}
             tf_static: {source: ''}
