@@ -48,7 +48,7 @@ project11/platforms/drix_8:
     phins:
       position_topic: /project11/drix_8/project11/nav/phins/position
       orientation_topic: /project11/drix_8/project11/nav/phins/orientation
-      velocity_topic: /project11/drix_8/project11/phins/nav/velocity
+      velocity_topic: /project11/drix_8/project11/nav/phins/velocity
   color:
     red: 1.0
     green: 0.0
