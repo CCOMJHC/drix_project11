@@ -27,6 +27,8 @@
   <node pkg="drix_helm" type="range_to_mothership" name="range_bearing" ns="$(arg namespace)">
   </node>
 
+  <node pkg="s57_grids" type="s57_grids" name="s57_grids" ns="$(arg namespace)"/>
+
   <group ns="$(arg namespace)/sensors/ais">
     <node pkg="marine_ais_tools" type="nmea_relay.py" name="nmea">
       <param name="input_type" value="udp"/>

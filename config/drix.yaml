@@ -21,3 +21,27 @@ udp_bridge:
             usbl_raw_audio_info: {source: usbl_raw/audio_info}
             usbl_modem_raw: {source: usbl_modem/raw}
           
+s57_grids:
+  map_frame: drix_8/map
+
+  robot:
+    frame_id: drix_8/base_link
+    minimum_depth: 1.0
+    maximum_caution_depth: 5.0
+    overhead_clearance: 5.0
+    minimum_speed: 0.01
+    maximum_speed: 6.0
+
+  grids:
+    - name: global
+      resolution: 25.0
+      length: 175000.0
+      period: 30.0
+    - name: area
+      resolution: 6.0
+      length: 15000.0
+      period: 30.0
+    - name: local
+      resolution: 3.0
+      length: 5000.0
+      period: 1.0
