@@ -28,7 +28,7 @@ public:
   void update(const drix_msgs::DrixNetworkInfo& data)
   {
     m_platform.name = data.drix_name;
-    m_platform.platform_namespace = "/project11/" + data.drix_name;
+    m_platform.platform_namespace = "project11/" + data.drix_name;
     if(!m_gps_sub)
     {
       ros::NodeHandle n;
@@ -56,7 +56,7 @@ public:
   void update(const drix_msgs::LauncherDescription& data)
   {
     m_platform.name = data.name;
-    m_platform.platform_namespace = "/project11/" + data.name;
+    m_platform.platform_namespace = "project11/" + data.name;
     if(!m_gps_sub)
     {
       ros::NodeHandle n;
