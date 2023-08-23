@@ -22,10 +22,10 @@ udp_bridge:
             usbl_modem_raw: {source: usbl_modem/raw}
           
 s57_grids:
-  map_frame: drix_8/map
+  map_frame: project11/drix_8/map
 
   robot:
-    frame_id: drix_8/base_link
+    frame_id: project11/drix_8/base_link
     minimum_depth: 1.0
     maximum_caution_depth: 5.0
     overhead_clearance: 5.0
