@@ -21,21 +21,12 @@
     <param name="frame_id" value="$(arg namespace)/base_link"/>
   </node>
 
-  <node pkg="drix_helm" type="ais_to_udp" name="ais_to_udp" ns="$(arg namespace)">
-  </node>
-
   <node pkg="drix_helm" type="range_to_mothership" name="range_bearing" ns="$(arg namespace)">
   </node>
 
   <node pkg="s57_grids" type="s57_grids" name="s57_grids" ns="$(arg namespace)"/>
 
   <group ns="$(arg namespace)/sensors/ais">
-    <node pkg="marine_ais_tools" type="nmea_relay.py" name="nmea">
-      <param name="input_type" value="udp"/>
-      <param name="input_port" value="4010"/>
-      <param name="frame_id" value="$(arg namespace)/ais"/>
-    </node>
-    
     <node pkg="marine_ais_tools" type="ais_parser.py" name="parser">
     </node>
 
