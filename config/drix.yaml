@@ -38,7 +38,7 @@ udp_bridge:
             project11_response: {source: project11/response}
             odom: {source: project11/odom}
 
-/project11/platforms/drix_8:
+project11/platforms/drix_8:
   robot_description: project11/drix_8/robot_description
   namespace: project11/drix_8
   width: 0.85
