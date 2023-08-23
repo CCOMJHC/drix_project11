@@ -25,6 +25,7 @@ udp_bridge:
             usbl_modem_raw: {source: usbl_modem/raw}
         vpn:
           host: robonucdv
+          port: 4200
           maximumBytesPerSecond: 200000
           topics:
             nav_orientation: {source: project11/phins/orientation}
