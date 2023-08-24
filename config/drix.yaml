@@ -13,6 +13,9 @@ udp_bridge:
       connections:
         default:
           topics:
+            nav_orientation: {source: project11/nav/phins/orientation, period: .5}
+            nav_position: {source: project11/nav/phins/position, period: .5}
+            nav_velocity: {source: project11/nav/phins/velocity, period: .5}
             sensors_ais_contact: {source: sensors/ais/contacts}
             diagnostics: {source: ''}
             tf: {source: ''}
@@ -20,12 +23,23 @@ udp_bridge:
             usbl_raw_audio: {source: usbl_raw/audio}
             usbl_raw_audio_info: {source: usbl_raw/audio_info}
             usbl_modem_raw: {source: usbl_modem/raw}
-          
-s57_grids:
-  map_frame: project11/drix_8/map
+        vpn:
+          host: robonucdv
+          port: 4200
+          maximumBytesPerSecond: 200000
+          topics:
+            nav_orientation: {source: project11/nav/phins/orientation, period: .5}
+            nav_position: {source: project11/nav/phins/position, period: .5}
+            nav_velocity: {source: project11/nav/phins/velocity, period: .5}
+            platforms: {source: /project11/platforms}
+            project11_display: {source: project11/display}
+            project11_heartbeat: {source: project11/heartbeat}
+            project11_status_mission_manager: {source: project11/status/mission_manager}
+            project11_response: {source: project11/response}
+            odom: {source: project11/odom}
 
+s57_grids:
   robot:
-    frame_id: project11/drix_8/base_link
     minimum_depth: 1.0
     maximum_caution_depth: 5.0
     overhead_clearance: 5.0

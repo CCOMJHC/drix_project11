@@ -16,6 +16,11 @@ TaskToTwistWorkflow/path_follower:
     Ki: 0.45
     Kd: 0.4
 
+TaskToTwistWorkflow/hover:
+  maximum_distance: 30.0
+  minimum_distance: 15.0
+  maximum_speed: 3.0
+
 grids:
   static:
     chart_global: s57_grids/grids/global
