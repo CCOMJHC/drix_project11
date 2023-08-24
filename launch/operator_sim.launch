@@ -13,4 +13,7 @@
   </include>
 
   <rosparam param="udp_bridge/remotes/robot/connections/default/host" ns="$(arg namespace)" subst_value="True">"172.16.0.1"</rosparam>
+  <rosparam param="udp_bridge/remotes/robot/connections/default/port" ns="$(arg namespace)" subst_value="True">4200</rosparam>
+  <rosparam param="udp_bridge/remotes/robot/connections/vpn" ns="$(arg namespace)">{host: localhost, port: 4299}</rosparam>
+
 </launch>
