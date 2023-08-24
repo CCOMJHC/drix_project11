@@ -4,7 +4,12 @@ mru_transform/sensors:
  - name: gps
    topics: { position: 'project11/nav/oem/position', orientation: 'project11/nav/oem/orientation', velocity: 'project11/nav/oem/velocity'}
  - name: ais
-   topics: { position: 'project11/nav/ais/position', orientation: 'project11/nav/ais/orientation', velocity: 'project11/nav/ais/velocity'}
+   topics: { position: 'sensors/ais/fix', orientation: 'sensors/ais/heading', velocity: 'sensors/ais/vel'}
+
+helm_manager/output_type: 'helm'
+helm_manager/max_yaw_speed: 0.5
+helm_manager/max_speed: 12.0
+
 
 udp_bridge:
   maxPacketSize: 1450
@@ -17,9 +22,10 @@ udp_bridge:
             nav_position: {source: project11/nav/phins/position, period: .5}
             nav_velocity: {source: project11/nav/phins/velocity, period: .5}
             sensors_ais_contact: {source: sensors/ais/contacts}
+            sensors_ais_fix: {source: sensors/ais/fix, period: .5}
+            sensors_ais_heading: {source: sensors/ais/heading, period: .5}
+            sensors_ais_vel: {source: sensors/ais/vel, period: .5}
             diagnostics: {source: ''}
-            tf: {source: ''}
-            tf_static: {source: ''}
             usbl_raw_audio: {source: usbl_raw/audio}
             usbl_raw_audio_info: {source: usbl_raw/audio_info}
             usbl_modem_raw: {source: usbl_modem/raw}
@@ -37,6 +43,10 @@ udp_bridge:
             project11_status_mission_manager: {source: project11/status/mission_manager}
             project11_response: {source: project11/response}
             odom: {source: project11/odom}
+            sensors_ais_contact: {source: sensors/ais/contacts}
+            sensors_ais_fix: {source: sensors/ais/fix, period: .5}
+            sensors_ais_heading: {source: sensors/ais/heading, period: .5}
+            sensors_ais_vel: {source: sensors/ais/vel, period: .5}
 
 s57_grids:
   robot:

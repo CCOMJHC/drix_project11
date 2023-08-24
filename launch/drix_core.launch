@@ -46,9 +46,6 @@
   <node pkg="marine_ais_tools" type="nmea_relay.py" name="ais_relay" ns="$(arg namespace)">
     <param name="input_type" value="udp"/>
     <param name="input_port" value="4010"/>
-    <remap from="ais/position" to="nav/ais/position"/>
-    <remap from="ais/orientation" to="nav/ais/orientation"/>
-    <remap from="ais/velocity" to="nav/ais/velocity"/>
   </node>
 
   <include file="$(find drix_project11)/launch/usbl.launch">
@@ -65,10 +62,10 @@
 
   <rosparam file="$(find drix_project11)/config/navigator.yaml" command="load" ns="$(arg namespace)/navigator"/>
 
-  <rosparam file="$(find drix_project11)/config/platform.yaml" command="load" ns="$(arg namespace)/platforms/$(arg drixName)"/>
+  <rosparam file="$(find drix_project11)/config/platform.yaml" command="load" ns="$(arg namespace)/project11/platforms/$(arg drixName)"/>
 
-  <rosparam param="platforms/$(arg drixName)/" ns="$(arg namespace)" subst_value="True">{robot_description: $(arg namespace)/robot_description, namespace: $(arg namespace)}</rosparam>
-  <rosparam param="platforms/$(arg drixName)/nav_sources/phins" ns="$(arg namespace)" subst_value="True">{position_topic: /$(arg namespace)/project11/nav/phins/position, orientation_topic: /$(arg namespace)/project11/nav/phins/orientation, velocity_topic: /$(arg namespace)/project11/nav/phins/velocity}</rosparam>
+  <rosparam param="project11/platforms/$(arg drixName)/" ns="$(arg namespace)" subst_value="True">{robot_description: $(arg namespace)/robot_description, namespace: $(arg namespace)}</rosparam>
+  <rosparam param="project11/platforms/$(arg drixName)/nav_sources/phins" ns="$(arg namespace)" subst_value="True">{position_topic: /$(arg namespace)/project11/nav/phins/position, orientation_topic: /$(arg namespace)/project11/nav/phins/orientation, velocity_topic: /$(arg namespace)/project11/nav/phins/velocity}</rosparam>
 
   <rosparam param="s57_grids/map_frame" ns="$(arg namespace)" subst_value="True">$(arg namespace)/map</rosparam>
   <rosparam param="s57_grids/robot/frame_id" ns="$(arg namespace)" subst_value="True">$(arg namespace)/base_link</rosparam>
