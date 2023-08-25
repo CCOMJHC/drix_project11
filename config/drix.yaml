@@ -47,6 +47,10 @@ udp_bridge:
             sensors_ais_fix: {source: sensors/ais/fix, period: .5}
             sensors_ais_heading: {source: sensors/ais/heading, period: .5}
             sensors_ais_vel: {source: sensors/ais/vel, period: .5}
+            tf: {source: /tf}
+            tf_static: {source: /tf_static}
+            nav_visualization_markers: {source: navigator/visualization_markers}
+
 
 s57_grids:
   robot:
