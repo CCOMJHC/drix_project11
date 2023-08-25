@@ -1,6 +1,9 @@
 #!/usr/bin/python3
-#node that uses ais data from Ruby Rhib and publishes it as AUV lat,long
-#so we can spoof having an auv in the water for testing porpoises
+#If ais mmsi is set as parameter 'target_id', take location of 
+#that vessel and publish it to /auv/gps. This allow us to 
+#us a vessel as a pseudo auv for testing the orbit capabilities
+#If 'target_id' param not set, print to ros log info all 
+# incoming AIS contacts name, mmsi, and location
 #written by Jenna Ehnot on Aug 24, 2023
 import rospy
 from marine_ais_msgs.msg import AISContact
