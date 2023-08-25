@@ -38,6 +38,7 @@
     <arg name="drixNumber" value="$(arg drixNumber)"/>
     <arg name="namespace" value="$(arg namespace)/sensors/ek80"/>
     <arg name="range" value="500"/>
+    <arg name="frame_id" value="$(arg namespace)/ek80"/>
   </include>
 
 
