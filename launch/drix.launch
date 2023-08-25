@@ -34,6 +34,13 @@
     <remap from="send_sms" to="/$(arg namespace)/usbl_modem/send_sms"/>
   </node>
 
+  <include file="$(find drix_project11)/launch/simrad_ek80.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="range" value="500"/>
+  </include>
+
+
   <!-- <node pkg="nui_project11" type="nui_node.py" name="nui" ns="$(arg nui_namespace)">
     <remap from="sms" to="/$(arg namespace)/usbl_modem/received_sms"/>
     <remap from="position" to="/$(arg namespace)/usbl_ranger/positions/$(arg nui_address)"/>
