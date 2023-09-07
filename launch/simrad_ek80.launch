@@ -3,10 +3,11 @@
   <arg name="namespace" default="project11/drix_$(arg drixNumber)/ek80"/> 
   <arg name="replay" default="false"/>
   <arg name="range" default="200"/>
+  <arg name="frame_id" default="$(arg namespace)"/>
 
   <node pkg="simrad_ek80" type="simrad_ek80" name="simrad_ek80" ns="$(arg namespace)">
     <param name="replay" value="$(arg replay)"/>
     <param name="range" value="$(arg range)"/>
-    <param name="frame_id" value="$(arg namespace)"/>
+    <param name="frame_id" value="$(arg frame_id)"/>
   </node>
 </launch>

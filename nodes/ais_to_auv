@@ -1,0 +1,55 @@
+#!/usr/bin/python3
+#If ais mmsi is set as parameter 'target_id', take location of 
+#that vessel and publish it to /auv/gps. This allow us to 
+#us a vessel as a pseudo auv for testing the orbit capabilities
+#If 'target_id' param not set, print to ros log info all 
+# incoming AIS contacts name, mmsi, and location
+#written by Jenna Ehnot on Aug 24, 2023
+import rospy
+from marine_ais_msgs.msg import AISContact
+from mdt_msgs.msg import Gps
+
+pub = None
+target_id = None
+
+#For each ais contact received
+def callback(data):
+    #If target_id parameter was set
+    if target_id is not None:
+        #Check if ais contact is from the target we're interested in
+        if data.id == target_id:
+            #Pack auv gps message with ais target info
+            auv_msg=Gps()
+            auv_msg.header=data.header
+            auv_msg.latitude=data.pose.position.latitude
+            auv_msg.longitude=data.pose.position.longitude
+            auv_msg.altitude=data.pose.position.altitude
+            pub.publish(auv_msg) #publish to /auv/gps
+    else:
+        #if we didn't have a target id, print all the contacts comeing in
+        name=str(data.static_info.name) 
+        mmsi=str(data.id)
+        lat=str(data.pose.position.latitude)
+        long=str(data.pose.position.longitude)
+        #check that contact has all fields we need (there's often no name so we ignore if its empty)
+        if (mmsi and lat and long) != '': 
+            rospy.loginfo("Name: %s  MMSI: %s   Lat, Long: %s, %s", name, mmsi, lat, long)
+
+
+rospy.init_node('ais_to_auv',anonymous=True)
+#Check if parameter target_id was set at run time
+if rospy.has_param('~target_id'):
+    target_id=rospy.get_param('~target_id')
+    rospy.loginfo("Using AIS data from vessel with MMSI %s", target_id)
+else:
+    #If not set, show user all their options for AIS contacts 
+    rospy.loginfo('No target_id parameter detected. Displaying ships nearby.')
+
+#Define publisher and subscriber
+pub = rospy.Publisher('/auv/gps',Gps, queue_size=10)
+rospy.Subscriber("/project11/drix_8/sensors/ais/contacts", AISContact, callback)
+
+rospy.spin()
+
+
+
