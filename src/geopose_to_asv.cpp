@@ -22,10 +22,10 @@ void geoPoseCallback(const geographic_msgs::GeoPoseStamped::ConstPtr &msg)
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "geopoint_to_asv");
+  ros::init(argc, argv, "geopose_to_asv");
   ros::NodeHandle n;
 
-  asv_pub = n.advertise<mdt_msgs::Gps>("/auv_gps", 1);
+  asv_pub = n.advertise<mdt_msgs::Gps>("/auv/gps", 1);
 
   ros::Subscriber geopose_sub = n.subscribe("input", 1, geoPoseCallback);
 
