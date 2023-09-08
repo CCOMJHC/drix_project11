@@ -1,8 +1,8 @@
 project11/platforms/2001:
   nav_sources:
     usbl:
-      geopoint_topic: /project11/drix_8/usbl/positions/2001
+      position_topic: /project11/drix_8/usbl/positions/2001
 project11/platforms/2711:
   nav_sources:
     usbl:
-      geopoint_topic: /project11/drix_8/usbl/positions/2712
+      position_topic: /project11/drix_8/usbl/positions/2712
