@@ -2,7 +2,7 @@
   <arg name="namespace" default="project11/operator"/>
   <arg name="drixNumber"/>
   <arg name="robotNamespace" default="project11/drix_$(arg drixNumber)"/>
-  <arg name="backgroundChart" default="$(find camp)/workspace/13283/13283_2.KAP"/>
+  <arg name="backgroundChart" default="$(find camp)/workspace/13283/13283_1.KAP"/>
   <arg name="rqt" default="false"/>
   <arg name="dual_camp" default="false"/>
   <arg name="usbl" default="false"/>

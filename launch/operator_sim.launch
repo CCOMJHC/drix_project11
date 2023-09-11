@@ -12,6 +12,13 @@
     <arg name="bridgePort" value="$(arg bridgePort)"/>
   </include>
 
+  <include file="$(find drix_project11)/launch/operator_ui.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="robotNamespace" value="$(arg robotNamespace)"/>
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+  </include>
+
+
   <rosparam param="udp_bridge/remotes/robot/connections/default/host" ns="$(arg namespace)" subst_value="True">"172.16.0.1"</rosparam>
   <rosparam param="udp_bridge/remotes/robot/connections/default/port" ns="$(arg namespace)" subst_value="True">4200</rosparam>
   <rosparam param="udp_bridge/remotes/robot/connections/vpn" ns="$(arg namespace)">{host: localhost, port: 4299}</rosparam>

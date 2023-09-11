@@ -2,6 +2,7 @@
   <arg name="drixNumber" default="1"/>
   <arg name="namespace" default="project11/drix_$(arg drixNumber)"/> 
   <arg name="localPort" default="4200"/>
+  <arg name="with_mesobot" default="false"/>
 
   <include file="$(find drix_project11)/launch/drix.launch">
     <arg name="namespace" value="$(arg namespace)"/>
@@ -10,6 +11,11 @@
     <arg name="logDirectory" value="/dev/null"/>
     <arg name="operator_ip" value="172.16.0.1"/>
     <arg name="operator_port" value="4201"/>
+  </include>
+
+  <include if="$(arg with_mesobot)" file="$(find mesobot_project11)/launch/sim_with_drix.launch">
+    <arg name="drixNumber" value="$(arg drixNumber"/>
+    <arg name="drixNamespace" value="$(arg namespace)"/>
   </include>
 
   <rosparam param="udp_bridge/remotes/operator/connections/vpn" ns="$(arg namespace)">{host: localhost, port: 4299}</rosparam>
