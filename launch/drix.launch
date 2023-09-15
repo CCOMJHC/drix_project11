@@ -20,6 +20,42 @@
     <arg name="operator_port" value="$(arg operator_port)"/>
   </include>
 
+  <node pkg="drix_helm" type="drix_helm_node" name="drix_helm" ns="$(arg namespace)">
+    <param name="frame_id" value="$(arg namespace)/base_link"/>
+  </node>
+
+  <node pkg="ixblue_phins_adapter" type="ixblue_phins_adapter_node" name="phins_adaptor" ns="$(arg namespace)">
+    <param name="frame_id" value="$(arg namespace)/base_link"/>
+  </node>
+
+  <node pkg="drix_helm" type="range_to_mothership" name="range_bearing" ns="$(arg namespace)">
+  </node>
+
+  <group ns="$(arg namespace)/sensors/ais">
+    <node pkg="marine_ais_tools" type="ais_parser.py" name="parser">
+    </node>
+
+    <node pkg="marine_ais_tools" type="ais_contact_tracker.py" name="tracker">
+    </node>
+
+    <node pkg="nmea_navsat_driver" type="nmea_topic_driver" name="navsat">
+      <remap from="nmea_sentence" to="nmea"/>
+    </node>
+  </group>
+
+  <node pkg="marine_ais_tools" type="nmea_relay.py" name="ais_relay" ns="$(arg namespace)">
+    <param name="input_type" value="udp"/>
+    <param name="input_port" value="4010"/>
+  </node>
+
+  <include file="$(find drix_project11)/launch/usbl.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="namespace" value="$(arg namespace)"/>
+  </include>
+  
+  <rosparam param="project11/platforms/$(arg drixName)/nav_sources/phins" ns="$(arg namespace)" subst_value="True">{position_topic: /$(arg namespace)/project11/nav/phins/position, orientation_topic: /$(arg namespace)/project11/nav/phins/orientation, velocity_topic: /$(arg namespace)/project11/nav/phins/velocity}</rosparam>
+
+
   <include file="$(find drix_project11)/launch/simrad_ek80.launch">
     <arg name="drixNumber" value="$(arg drixNumber)"/>
     <arg name="namespace" value="$(arg namespace)/sensors/ek80"/>

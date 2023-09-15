@@ -1,0 +1,15 @@
+# for use with asv_sim base simulation
+mru_transform/sensors:
+ - name: nav
+   topics: { position: 'sensors/nav/position', orientation: 'sensors/nav/orientation', velocity: 'sensors/nav/velocity'}
+
+udp_bridge:
+  name: drix_2
+  remotes:
+    operator:
+      connections:
+        default:
+          topics:
+            nav_position: {source: sensors/nav/position}
+            nav_orientation: {source: sensors/nav/orientation}
+            nav_velocity: {source: sensors/nav/velocity}
