@@ -4,11 +4,10 @@
   <arg name="localPort" default="4200"/>
   <arg name="operator_ip" default="192.168.$(arg drixNumber).180"/>
   <arg name="operator_port" default="4200"/>
-  <arg name="mesobot_namespace" default="project11/mesobot"/>
-  <arg name="nui_namespace" default="project11/nui"/>
   <arg name="logDirectory"/>
 
-  <!-- acoustic address or transponder number -->
+  <arg name="with_mesobot" default="true"/>
+  <arg name="mesobot_namespace" default="project11/mesobot"/>
   <arg name="mesobot_address" default="2509"/>
   <arg name="mesobot_backup_address" default="2712"/>
 
@@ -18,6 +17,10 @@
     <arg name="localPort" value="$(arg localPort)"/>
     <arg name="operator_ip" value="$(arg operator_ip)"/>
     <arg name="operator_port" value="$(arg operator_port)"/>
+    <arg name="with_mesobot" value="$(arg with_mesobot)"/>
+    <arg name="mesobot_namespace" value="$(arg mesobot_namespace)"/>
+    <arg name="mesobot_address" value="$(arg mesobot_address)"/>
+    <arg name="mesobot_backup_address" value="$arg(mesobot_backup_address)"/>
   </include>
 
   <node pkg="drix_helm" type="drix_helm_node" name="drix_helm" ns="$(arg namespace)">
@@ -62,18 +65,6 @@
     <arg name="range" value="500"/>
     <arg name="frame_id" value="$(arg namespace)/ek80"/>
   </include>
-
-  <include file="$(find mesobot_project11)/launch/mesobot.launch">
-    <arg name="mesobot_namespace" value="$(arg mesobot_namespace)"/>
-    <arg name="host_namespace" value="$(arg namespace)"/>
-    <arg name="usbl_address" value="$(arg mesobot_address)"/>
-    <arg name="usbl_backup_address" value="$(arg mesobot_backup_address)"/>
-  </include>
-  <rosparam command="load" file="$(find drix_project11)/config/mesobot.yaml" ns="$(arg namespace)"/>
-
-  <node pkg="drix_project11" type="geopose_to_asv" name="geopose_to_asv" ns="$(arg mesobot_namespace)">
-    <remap from="input" to="nav/position"/>
-  </node>
 
   <node pkg="rosbag" type="record" name="project11_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/project11 --split --duration=10m --lz4 -e &quot;/project11/(.*)&quot;"/>
 </launch>

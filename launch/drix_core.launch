@@ -7,6 +7,11 @@
   <arg name="operator_port" default="4200"/>
   <arg name="enableBridge" default="true"/>
 
+  <arg name="with_mesobot" default="true"/>
+  <arg name="mesobot_namespace" default="project11/mesobot"/>
+  <arg name="mesobot_address" default="2509"/>
+  <arg name="mesobot_backup_address" default="2712"/>
+
 
   <include file="$(find project11)/launch/robot_core.launch">
     <arg name="namespace" value="$(arg namespace)"/>
@@ -19,6 +24,20 @@
     <node pkg="s57_grids" type="s57_grids" name="s57_grids"/>
 
     <node pkg="project11" type="platform_send.py" name="platform_sender"/>
+  </group>
+
+  <group if="$(arg with_mesobot)">
+    <include file="$(find mesobot_project11)/launch/mesobot.launch">
+      <arg name="mesobot_namespace" value="$(arg mesobot_namespace)"/>
+      <arg name="host_namespace" value="$(arg namespace)"/>
+      <arg name="usbl_address" value="$(arg mesobot_address)"/>
+      <arg name="usbl_backup_address" value="$(arg mesobot_backup_address)"/>
+    </include>
+    <rosparam command="load" file="$(find drix_project11)/config/mesobot.yaml" ns="$(arg namespace)"/>
+
+    <node pkg="drix_project11" type="geopose_to_asv" name="geopose_to_asv" ns="$(arg mesobot_namespace)">
+      <remap from="input" to="nav/position"/>
+    </node>
   </group>
 
 
