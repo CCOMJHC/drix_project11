@@ -7,8 +7,8 @@ mru_transform/sensors:
    topics: { position: 'sensors/ais/fix', orientation: 'sensors/ais/heading', velocity: 'sensors/ais/vel'}
 
 helm_manager/output_type: 'helm'
-helm_manager/max_yaw_speed: 0.5
-helm_manager/max_speed: 12.0
+helm_manager/max_yaw_speed: 1.0
+helm_manager/max_speed: 6.0
 
 
 udp_bridge:

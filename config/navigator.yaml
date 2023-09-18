@@ -3,7 +3,7 @@ robot:
     linear/x: 6.0
 
   default_velocity:
-    linear/x: 5.0
+    linear/x: 5.75
 
   turn_radius: 25.0
 
