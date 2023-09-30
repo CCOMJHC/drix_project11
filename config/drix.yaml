@@ -29,8 +29,29 @@ udp_bridge:
             usbl_raw_audio: {source: usbl_raw/audio}
             usbl_raw_audio_info: {source: usbl_raw/audio_info}
             usbl_modem_raw: {source: usbl_modem/raw}
+        wifi:
+          host: salmondw
+          port: 4200
+          maximumBytesPerSecond: 200000
+          topics:
+            nav_orientation: {source: project11/nav/phins/orientation, period: .5}
+            nav_position: {source: project11/nav/phins/position, period: .5}
+            nav_velocity: {source: project11/nav/phins/velocity, period: .5}
+            platforms: {source: /project11/platforms}
+            project11_display: {source: project11/display}
+            project11_heartbeat: {source: project11/heartbeat}
+            project11_status_mission_manager: {source: project11/status/mission_manager}
+            project11_response: {source: project11/response}
+            odom: {source: project11/odom}
+            sensors_ais_contact: {source: sensors/ais/contacts}
+            sensors_ais_fix: {source: sensors/ais/fix, period: .5}
+            sensors_ais_heading: {source: sensors/ais/heading, period: .5}
+            sensors_ais_vel: {source: sensors/ais/vel, period: .5}
+            tf: {source: /tf}
+            tf_static: {source: /tf_static}
+            nav_visualization_markers: {source: navigator/visualization_markers}
         vpn:
-          host: robonucdv
+          host: salmondv
           port: 4200
           maximumBytesPerSecond: 200000
           topics:
