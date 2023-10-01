@@ -2,7 +2,7 @@
 
 DAY=$(date "+%Y-%m-%d")
 NOW=$(date "+%Y-%m-%dT%H.%M.%S.%N")
-LOGDIR="/home/field/project11/logs/${DAY}"
+LOGDIR="/home/field/project11/logs"
 mkdir -p "$LOGDIR"
 LOG_FILE="${LOGDIR}/autostart_robobox_interface_${NOW}.txt"
 

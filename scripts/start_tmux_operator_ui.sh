@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DAY=$(date "+%Y-%m-%d")
-LOGDIR="/home/field/project11/log/${DAY}"
+LOGDIR="/home/field/project11/logs"
 mkdir -p "$LOGDIR"
 
 source /home/field/.bashrc
