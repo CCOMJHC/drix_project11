@@ -68,5 +68,7 @@
     <arg name="frame_id" value="$(arg namespace)/ek80"/>
   </include>
 
+  <node pkg="biospherical_par_sensor" type="par_sensor.py" name="par_sensor" ns="$(arg namespace)/sensors/par"/>
+
   <node pkg="rosbag" type="record" name="project11_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/project11 --split --duration=10m --lz4 -e &quot;/project11/(.*)&quot;"/>
 </launch>

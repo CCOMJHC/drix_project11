@@ -30,6 +30,7 @@ udp_bridge:
             usbl_raw_audio: {source: usbl_raw/audio}
             usbl_raw_audio_info: {source: usbl_raw/audio_info}
             usbl_modem_raw: {source: usbl_modem/raw}
+            par_sensor: {source: /project11/drix_8/sensors/par/data}
         wifi:
           host: salmondw
           port: 4200
@@ -51,6 +52,7 @@ udp_bridge:
             tf: {source: /tf}
             tf_static: {source: /tf_static}
             nav_visualization_markers: {source: navigator/visualization_markers}
+            par_sensor: {source: /project11/drix_8/sensors/par/data}
         vpn:
           host: salmondv
           port: 4200
@@ -72,6 +74,7 @@ udp_bridge:
             tf: {source: /tf}
             tf_static: {source: /tf_static}
             nav_visualization_markers: {source: navigator/visualization_markers}
+            par_sensor: {source: /project11/drix_8/sensors/par/data}
 
 
 s57_grids:
