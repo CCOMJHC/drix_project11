@@ -36,7 +36,7 @@
     <rosparam command="load" file="$(find drix_project11)/config/mesobot.yaml" ns="$(arg namespace)"/>
 
     <node pkg="drix_project11" type="geopose_to_asv" name="geopose_to_asv" ns="$(arg mesobot_namespace)">
-      <remap from="input" to="nav/position"/>
+      <remap from="input" to="sensors/nav/pose"/>
     </node>
   </group>
 
