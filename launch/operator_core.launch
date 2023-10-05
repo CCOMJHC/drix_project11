@@ -39,6 +39,12 @@
     <param name="drixNumber" value="$(arg drixNumber)"/>
   </node>
 
+  <group ns="$(arg namespace)">
+    <node pkg="mbr" type="mbr_logging.py" name="mbr_node"/>
+    <rosparam command="load" file="$(find ccomjhc_project11)/configuration/mbr.yaml"/>
+    <param name="ipaddress" value="mbr-operator-drix"/>
+  </group>
+
   <rosparam command="load" file="$(find drix_project11)/config/drix_operator.yaml" ns="$(arg namespace)"/>
 
   <rosparam param="udp_bridge/remotes/robot/connections/default/host" ns="$(arg namespace)" subst_value="True">"$(arg robotHost)"</rosparam>

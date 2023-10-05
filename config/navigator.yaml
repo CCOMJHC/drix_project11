@@ -20,8 +20,8 @@ TaskToTwistWorkflow/path_follower:
     Kd: 0.4
 
 TaskToTwistWorkflow/hover:
-  maximum_distance: 30.0
-  minimum_distance: 15.0
+  maximum_distance: 75.0
+  minimum_distance: 30.0
   maximum_speed: 3.0
 
 grids:
