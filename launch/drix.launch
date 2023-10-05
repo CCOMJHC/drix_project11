@@ -64,7 +64,7 @@
   <include file="$(find drix_project11)/launch/simrad_ek80.launch">
     <arg name="drixNumber" value="$(arg drixNumber)"/>
     <arg name="namespace" value="$(arg namespace)/sensors/ek80"/>
-    <arg name="range" value="500"/>
+    <arg name="range" value="250"/>
     <arg name="frame_id" value="$(arg namespace)/ek80"/>
   </include>
 
