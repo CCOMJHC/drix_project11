@@ -7,8 +7,7 @@ udp_bridge/remotes:
           usbl_2509_position: {source: usbl_ranger/positions/2509}
           usbl_2712_position: {source: usbl_ranger/positions/2712}
           mesobot_heartbeat: {source: /project11/mesobot/project11/heartbeat}
-          mesobot_position: {source: /project11/mesobot/nav/position}
-          mesobot_heading: {source: /project11/mesobot/heading}
+          mesobot_pose: {source: /project11/mesobot/sensors/nav/pose}
           mesobot_depth: {source: /project11/mesobot/depth}
           mesobot_battery: {source: /project11/mesobot/battery}
           mesobot_radiometer: {source: /project11/mesobot/radiometer}
