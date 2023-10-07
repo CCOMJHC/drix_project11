@@ -9,6 +9,7 @@
   <arg name="enableTransforms" default="true"/>
   <arg name="logDirectory" default="/dev/null"/>
   <arg name="operatorJoystick" default="false"/>
+  <arg name="mbrLogger" default="false"/>
 
   <include file="$(find project11)/launch/operator_core.launch">
     <arg name="operatorJoystick" value="$(arg operatorJoystick)"/>
@@ -39,7 +40,7 @@
     <param name="drixNumber" value="$(arg drixNumber)"/>
   </node>
 
-  <group ns="$(arg namespace)">
+  <group if="$(arg mbrLogger)" ns="$(arg namespace)">
     <node pkg="mbr" type="mbr_logging.py" name="mbr_node"/>
     <rosparam command="load" file="$(find ccomjhc_project11)/configuration/mbr.yaml"/>
     <param name="ipaddress" value="mbr-operator-drix"/>
