@@ -1,0 +1,36 @@
+<launch>
+
+  <!-- This is meant to run without the rest of project11 for testing, so it starts udp_bridge -->
+
+  <arg name="drixNumber" default="8"/>
+  <arg name="drixName" default="drix_$(arg drixNumber)"/>
+  <arg name="namespace" default="project11/$(arg drixName)"/> 
+  <arg name="localPort" default="4200"/>
+  <arg name="operator_ip" default="192.168.$(arg drixNumber).180"/>
+  <arg name="operator_port" default="4200"/>
+  <arg name="enableBridge" default="true"/>
+
+  <node if="$(arg enableBridge)" pkg="udp_bridge" type="udp_bridge_node" name="udp_bridge" ns="$(arg namespace)">
+    <param name="port" value="$(arg localPort)"/>
+    <param name="name" value="$(arg drixName)"/>
+  </node>
+
+
+  <node pkg="drix_helm" type="drix_helm_node" name="drix_helm" ns="$(arg namespace)">
+    <param name="frame_id" value="$(arg namespace)/base_link"/>
+  </node>
+
+  <group ns="$(arg namespace)/sensors/ais">
+    <node pkg="marine_ais_tools" type="ais_parser.py" name="parser">
+    </node>
+
+    <node pkg="marine_ais_tools" type="ais_contact_tracker.py" name="tracker">
+    </node>
+
+    <node pkg="nmea_navsat_driver" type="nmea_topic_driver" name="navsat">
+      <remap from="nmea_sentence" to="nmea"/>
+    </node>
+  </group>
+
+
+</launch>
