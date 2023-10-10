@@ -26,7 +26,7 @@ udp_bridge:
             sensors_ais_fix: {source: sensors/ais/fix, period: .5}
             sensors_ais_heading: {source: sensors/ais/heading, period: .5}
             sensors_ais_vel: {source: sensors/ais/vel, period: .5}
-            diagnostics: {source: ''}
+            diagnostics: {}
             usbl_raw_audio: {source: usbl_raw/audio}
             usbl_raw_audio_info: {source: usbl_raw/audio_info}
             usbl_modem_raw: {source: usbl_modem/raw}
