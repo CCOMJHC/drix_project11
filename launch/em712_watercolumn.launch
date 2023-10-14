@@ -1,0 +1,10 @@
+<launch>
+  <arg name="drixNumber" default="8"/>
+  <arg name="drixName" default="drix_$(arg drixNumber)"/>
+  <arg name="namespace" default="project11/$(arg drixName)/sensors/em712"/> 
+  <arg name="frame_id" default="project11/$(arg drixName)/em712"/>
+
+  <node pkg="kongsberg_watercolumn" type="file_watcher.py" name="em712" ns="$(arg namespace)">
+    <param name="frame_id" value="$(arg frame_id)"/>
+  </node>
+</launch>
