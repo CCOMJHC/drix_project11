@@ -1,0 +1,11 @@
+<launch>
+  <arg name="drixNumber" default="8"/>
+  <arg name="namespace" default="project11/drix_$(arg drixNumber)/sensors/ek80"/> 
+
+  <group ns="$(arg namespace)">
+    <node pkg="watercolumn_layer_tracker" type="single_layer_tracker" name="es200_7c_tracker" ns="es200_7c">
+    </node>
+    <node pkg="watercolumn_layer_tracker" type="single_layer_tracker" name="es70_18cd_tracker" ns="es70_18cd">
+    </node>
+  </group>
+</launch>
