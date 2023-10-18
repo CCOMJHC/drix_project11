@@ -1,0 +1,10 @@
+<launch>
+  <arg name="drixNumber" default="8"/>
+  <arg name="namespace" default="project11/drix_$(arg drixNumber)/sensors/ek80"/> 
+
+  <group ns="$(arg namespace)">
+    <node pkg="marine_tools" type="marine_sonar_to_pointcloud" name="to_pointcloud" ns="es70_18cd">
+      <remap from="sonar" to="echogram"/>
+    </node>
+  </group>
+</launch>
