@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#called from cron @reboot using field users cron
+#called from cron @reboot using field user's crontab
 
 DAY=$(date "+%Y-%m-%d")
 NOW=$(date "+%Y-%m-%dT%H.%M.%S.%N")
