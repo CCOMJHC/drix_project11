@@ -13,7 +13,6 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <depend>drix_msgs</depend>
-  <depend>ixblue_phins_adapter</depend>
   <depend>marine_ais_tools</depend>
   <depend>mru_transform</depend>
   <depend>project11_msgs</depend>
