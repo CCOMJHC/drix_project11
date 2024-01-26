@@ -44,7 +44,7 @@ udp_bridge:
             project11_heartbeat: {source: project11/heartbeat}
             project11_status_mission_manager: {source: project11/status/mission_manager}
             project11_response: {source: project11/response}
-            odom: {source: project11/odom}
+            odom: {source: odom}
             sensors_ais_contact: {source: sensors/ais/contacts}
             sensors_ais_fix: {source: sensors/ais/fix, period: .5}
             sensors_ais_heading: {source: sensors/ais/heading, period: .5}
@@ -66,7 +66,7 @@ udp_bridge:
             project11_heartbeat: {source: project11/heartbeat}
             project11_status_mission_manager: {source: project11/status/mission_manager}
             project11_response: {source: project11/response}
-            odom: {source: project11/odom}
+            odom: {source: odom}
             sensors_ais_contact: {source: sensors/ais/contacts}
             sensors_ais_fix: {source: sensors/ais/fix, period: .5}
             sensors_ais_heading: {source: sensors/ais/heading, period: .5}
