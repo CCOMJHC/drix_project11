@@ -1,0 +1,36 @@
+<launch>
+  <arg name="namespace" default="project11/operator"/>
+  <arg name="drixNumber"/>
+  <arg name="robotNamespace" default="project11/drix_$(arg drixNumber)"/>
+  <arg name="enableBridge" default="true"/>
+  <arg name="bridgePort" default="4200"/>
+  <arg name="robotBridgeName" default="drix_$(arg drixNumber)"/>
+  <arg name="robotHost" default="echodv"/>
+  <arg name="logDirectory" default="/dev/null"/>
+
+  <include file="$(find project11)/launch/operator_core.launch">
+    <arg name="operatorJoystick" value="false"/>
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="robotNamespace" value="$(arg robotNamespace)"/>
+    <arg name="enableBridge" value="$(arg enableBridge)"/>
+    <arg name="robotBridgeName" value="$(arg robotBridgeName)"/>
+    <arg name="localPort" value="$(arg bridgePort)"/>
+  </include>
+
+  <include file="$(find drix_description)/launch/load.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="namespace" value="$(arg robotNamespace)"/>
+  </include>
+
+  <include file="$(find drix_description)/launch/publish_state.launch">
+    <arg name="drixNumber" value="$(arg drixNumber)"/>
+    <arg name="namespace" value="$(arg robotNamespace)"/>
+  </include>
+
+  <rosparam param="udp_bridge/remotes/robot/connections/default/host" ns="$(arg namespace)" subst_value="True">"$(arg robotHost)"</rosparam>
+
+  <rosparam param="udp_bridge/remotes/robot/connections/vpn/topics" ns="$(arg namespace)" subst_value="True">{project11_command: {source: /$(arg robotNamespace)/project11/command}, piloting_mode_manual_helm: {source: /$(arg robotNamespace)/project11/piloting_mode/manual/helm}}</rosparam>
+
+  <rosparam param="udp_bridge/remotes/robot/connections/default/topics/usbl_modem_send_raw/source" ns="$(arg namespace)" subst_value="True">"/$(arg robotNamespace)/usbl_modem/send_raw"</rosparam>
+
+</launch>
