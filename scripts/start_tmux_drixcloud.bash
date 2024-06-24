@@ -24,6 +24,8 @@ done
 
 source /home/field/.bashrc
 
+/usr/bin/tmux new -d -s roscore roscore
+
 /usr/bin/tmux new -d -s project11
 /usr/bin/tmux send-keys -t project11 "rosrun rosmon rosmon --name=rosmon_p11_operator_drixcloud drix_project11 drixcloud.launch drixNumber:=8" C-m
 
