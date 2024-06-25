@@ -22,9 +22,9 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-# add_executable(robobox_interface src/robobox_interface.cpp)
-# target_link_libraries(robobox_interface ${catkin_LIBRARIES})
-# add_dependencies(robobox_interface ${catkin_EXPORTED_TARGETS})
+add_executable(robobox_interface src/robobox_interface.cpp)
+target_link_libraries(robobox_interface ${catkin_LIBRARIES})
+add_dependencies(robobox_interface ${catkin_EXPORTED_TARGETS})
 
 add_executable(geopoint_to_asv src/geopoint_to_asv.cpp)
 target_link_libraries(geopoint_to_asv ${catkin_LIBRARIES})
@@ -34,6 +34,6 @@ add_executable(geopose_to_asv src/geopose_to_asv.cpp)
 target_link_libraries(geopose_to_asv ${catkin_LIBRARIES})
 add_dependencies(geopose_to_asv ${catkin_EXPORTED_TARGETS})
 
-# add_executable(robobox_bag_to_project11 src/robobox_bag_to_project11.cpp)
-# target_link_libraries(robobox_bag_to_project11 ${catkin_LIBRARIES})
-# add_dependencies(robobox_bag_to_project11 ${catkin_EXPORTED_TARGETS})
+add_executable(robobox_bag_to_project11 src/robobox_bag_to_project11.cpp)
+target_link_libraries(robobox_bag_to_project11 ${catkin_LIBRARIES})
+add_dependencies(robobox_bag_to_project11 ${catkin_EXPORTED_TARGETS})

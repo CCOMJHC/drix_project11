@@ -53,7 +53,7 @@ public:
     m_update_time = ros::Time::now();
   }
 
-  void update(const drix_msgs::LauncherDescription& data)
+  void update(const cortix_msgs::LauncherDescription& data)
   {
     m_platform.name = data.name;
     m_platform.platform_namespace = "project11/" + data.name;
