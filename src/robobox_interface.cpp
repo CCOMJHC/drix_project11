@@ -5,7 +5,7 @@
 #include "geometry_msgs/TwistWithCovarianceStamped.h"
 #include "project11_msgs/PlatformList.h"
 
-#include "drix_msgs/DrixsNetworkInfo.h"
+#include "cortix_msgs/BridgeCommFleetStatus.h"
 #include "drix_msgs/LauncherDescriptionArray.h"
 #include "mdt_msgs/LightGps.h"
 #include "mdt_msgs/Gps.h"
@@ -25,21 +25,21 @@ project11_msgs::Platform mothership_platform;
 class Platform
 {
 public:
-  void update(const drix_msgs::DrixNetworkInfo& data)
+  void update(const cortix_msgs::BridgeCommVehicleStatus& data)
   {
-    m_platform.name = data.drix_name;
-    m_platform.platform_namespace = "project11/" + data.drix_name;
+    m_platform.name = data.vehicle_name;
+    m_platform.platform_namespace = "project11/" + data.vehicle_name;
     if(!m_gps_sub)
     {
       ros::NodeHandle n;
-      m_gps_sub = n.subscribe("/"+data.drix_name+"/comms/topic_simplifier/light_gps", 1, &Platform::gpsCallback, this);
+      m_gps_sub = n.subscribe("/"+data.vehicle_name+"/comms/topic_simplifier/light_gps", 1, &Platform::gpsCallback, this);
       project11_msgs::NavSource nav;
       nav.name = "robobox";
-      nav.position_topic = "/project11/robobox/"+data.drix_name+"/position";
+      nav.position_topic = "/project11/robobox/"+data.vehicle_name+"/position";
       m_position_pub = n.advertise<sensor_msgs::NavSatFix>(nav.position_topic, 1);
-      nav.orientation_topic = "/project11/robobox/"+data.drix_name+"/orientation";
+      nav.orientation_topic = "/project11/robobox/"+data.vehicle_name+"/orientation";
       m_orientation_pub = n.advertise<sensor_msgs::Imu>(nav.orientation_topic, 1);
-      nav.velocity_topic = "/project11/robobox/"+data.drix_name+"/velocity";
+      nav.velocity_topic = "/project11/robobox/"+data.vehicle_name+"/velocity";
       m_velocity_pub = n.advertise<geometry_msgs::TwistWithCovarianceStamped>(nav.velocity_topic, 1);
       m_platform.nav_sources.push_back(nav);
       m_platform.length = 7.7;
@@ -127,10 +127,10 @@ private:
 
 std::map<std::string, Platform> platforms;
 
-void drixNetworkInfoCallback(const drix_msgs::DrixsNetworkInfo::ConstPtr& data)
+void drixNetworkInfoCallback(const cortix_msgs::BridgeCommFleetStatus::ConstPtr& data)
 {
-  for(auto drix: data->drixs)
-    platforms[drix.drix_name].update(drix);
+  for(auto drix: data->vehicles)
+    platforms[drix.vehicle_name].update(drix);
 }
 
 void launcherDescriptionCallback(const drix_msgs::LauncherDescriptionArray::ConstPtr& data)

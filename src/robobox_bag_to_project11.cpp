@@ -6,7 +6,7 @@
 #include "geometry_msgs/TwistWithCovarianceStamped.h"
 #include "project11_msgs/PlatformList.h"
 
-#include "drix_msgs/DrixsNetworkInfo.h"
+#include "cortix_msgs/BridgeCommFleetStatus.h"
 #include "drix_msgs/LauncherDescriptionArray.h"
 #include "mdt_msgs/LightGps.h"
 #include "mdt_msgs/Gps.h"
@@ -19,18 +19,18 @@ project11_msgs::Platform mothership_platform;
 class Platform
 {
 public:
-  void update(const drix_msgs::DrixNetworkInfo& data, ros::Time now)
+  void update(const cortix_msgs::BridgeCommVehicleStatus& data, ros::Time now)
   {
-    m_platform.name = data.drix_name;
-    m_platform.platform_namespace = "/project11/" + data.drix_name;
+    m_platform.name = data.vehicle_name;
+    m_platform.platform_namespace = "/project11/" + data.vehicle_name;
     //if(!m_gps_sub)
     {
       //m_gps_sub = n.subscribe("/"+data.drix_name+"/light_gps", 1, &Platform::gpsCallback, this);
       project11_msgs::NavSource nav;
       nav.name = "robobox";
-      nav.position_topic = "/project11/robobox/"+data.drix_name+"/position";
-      nav.orientation_topic = "/project11/robobox/"+data.drix_name+"/orientation";
-      nav.velocity_topic = "/project11/robobox/"+data.drix_name+"/velocity";
+      nav.position_topic = "/project11/robobox/"+data.vehicle_name+"/position";
+      nav.orientation_topic = "/project11/robobox/"+data.vehicle_name+"/orientation";
+      nav.velocity_topic = "/project11/robobox/"+data.vehicle_name+"/velocity";
       m_platform.nav_sources.push_back(nav);
       m_platform.length = 7.7;
       m_platform.width = 0.85;
@@ -113,10 +113,10 @@ private:
 
 std::map<std::string, Platform> platforms;
 
-void drixNetworkInfoCallback(const drix_msgs::DrixsNetworkInfo::ConstPtr& data, ros::Time now)
+void drixNetworkInfoCallback(const cortix_msgs::BridgeCommFleetStatus::ConstPtr& data, ros::Time now)
 {
-  for(auto drix: data->drixs)
-    platforms[drix.drix_name].update(drix, now);
+  for(auto drix: data->vehicles)
+    platforms[drix.vehicle_name].update(drix, now);
 }
 
 void launcherDescriptionCallback(const drix_msgs::LauncherDescriptionArray::ConstPtr& data, ros::Time now)
@@ -212,7 +212,7 @@ int main(int argc, char **argv)
 
     if(m.getTopic() == "/bridge_comm_masters/network_info")
     {
-      drix_msgs::DrixsNetworkInfo::ConstPtr dni = m.instantiate<drix_msgs::DrixsNetworkInfo>();
+      cortix_msgs::BridgeCommFleetStatus::ConstPtr dni = m.instantiate<cortix_msgs::BridgeCommFleetStatus>();
       if(dni)
         drixNetworkInfoCallback(dni, current_time);
     }
