@@ -29,7 +29,7 @@
 
   <rosparam param="udp_bridge/remotes/robot/connections/default/host" ns="$(arg namespace)" subst_value="True">"$(arg robotHost)"</rosparam>
 
-  <rosparam param="udp_bridge/remotes/robot/connections/vpn/topics" ns="$(arg namespace)" subst_value="True">{project11_command: {source: /$(arg robotNamespace)/project11/command}, piloting_mode_manual_helm: {source: /$(arg robotNamespace)/project11/piloting_mode/manual/helm}}</rosparam>
+  <!-- <rosparam param="udp_bridge/remotes/robot/connections/vpn/topics" ns="$(arg namespace)" subst_value="True">{project11_command: {source: /$(arg robotNamespace)/project11/command}, piloting_mode_manual_helm: {source: /$(arg robotNamespace)/project11/piloting_mode/manual/helm}}</rosparam> -->
 
   <rosparam param="udp_bridge/remotes/robot/connections/default/topics/usbl_modem_send_raw/source" ns="$(arg namespace)" subst_value="True">"/$(arg robotNamespace)/usbl_modem/send_raw"</rosparam>
 
