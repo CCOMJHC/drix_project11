@@ -3,7 +3,7 @@
   <arg name="drixName" default="drix_$(arg drixNumber)"/>
   <arg name="namespace" default="project11/$(arg drixName)"/> 
   <arg name="localPort" default="4200"/>
-  <arg name="operator_ip" default="192.168.$(arg drixNumber).180"/>
+  <arg name="operator_ip" default="10.$(arg drixNumber).0.41"/>
   <arg name="operator_port" default="4200"/>
   <arg name="logDirectory"/>
 

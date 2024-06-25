@@ -9,7 +9,7 @@ udp_bridge:
       connections:
         default:
           port: 4201  # Teltonika would not forward 4200, but 4201 works.
-        vpn:
-          host: echodv
-          port: 4201  # Teltonika would not forward 4200, but 4201 works.
+        # vpn:
+        #   host: echodv
+        #   port: 4201  # Teltonika would not forward 4200, but 4201 works.
 
