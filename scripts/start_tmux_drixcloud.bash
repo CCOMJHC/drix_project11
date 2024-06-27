@@ -8,7 +8,6 @@ LOG_FILE="${LOGDIR}/autostart_drixcloud_${NOW}.txt"
 
 {
 
-printenv
 set -x
 
 echo ""
@@ -18,18 +17,26 @@ date
 echo "#############################################"
 echo ""
 
-while ! ping -c 1 -W 1 robocloud; do
-	sleep 1
-done
-
-source /home/field/.bashrc
-
-/usr/bin/tmux new -d -s roscore roscore
+sleep 1
 
 /usr/bin/tmux new -d -s project11
 /usr/bin/tmux send-keys -t project11 "rosrun rosmon rosmon --name=rosmon_p11_operator_drixcloud drix_project11 drixcloud.launch drixNumber:=8" C-m
 
+sleep 1
+
+/usr/bin/tmux new -d -s roscore
+/usr/bin/tmux send-keys -t roscore "source /home/field/.bashrc" C-m
+/usr/bin/tmux send-keys -t roscore "roscore" C-m
+
+sleep 1
+
+/usr/bin/tigervncserver -nolisten tcp -localhost no  :1
+
+sleep 1
+
+/usr/bin/tigervncserver -nolisten tcp -localhost no  :2
+
 set +x
 
 } >> "${LOG_FILE}" 2>&1
-
+ln -s -f ${LOG_FILE} ${LOGDIR}/autostart_drixcloud_latest.txt
