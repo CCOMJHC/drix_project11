@@ -46,6 +46,21 @@
     <node pkg="nmea_navsat_driver" type="nmea_topic_driver" name="navsat">
       <remap from="nmea_sentence" to="nmea"/>
     </node>
+    <group ns="garmin_cortex">
+      <node pkg="marine_ais_tools" type="nmea_relay.py" name="nmea_relay">
+        <param name="input_type" value="tcp"/>
+        <param name="input_address" value="172.30.0.209"/>
+        <param name="input_port" value="39150"/>
+      </node>
+      <node pkg="drix_project11" type="nmea_to_string_stamped" name="nmea_to_mdt">
+        <remap from="output" to="/cortix/sense/sensors_data/raw_ais"/>
+      </node>
+
+      <node pkg="marine_tools" type="nmea_to_udp.py" name="ais_to_marine_traffic">
+        <param name="address" value="5.9.207.224"/>
+        <param name="port" value="12699"/>
+      </node>
+    </group>
   </group>
 
   <node pkg="marine_ais_tools" type="nmea_relay.py" name="ais_relay" ns="$(arg namespace)">

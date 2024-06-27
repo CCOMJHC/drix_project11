@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+
+# Derived from Jenna Ehnot's ais_to_auv node
+
+import rospy
+from nmea_msgs.msg import Sentence
+from mdt_msgs.msg import StampedString
+
+pub = None
+
+def callback(data: Sentence):
+    ss = StampedString()
+    ss.header = data.header
+    ss.data = data.sentence
+    pub.publish(ss)
+
+
+rospy.init_node('nmea_to_string')
+pub = rospy.Publisher('output', StampedString, queue_size=10)
+sub = rospy.Subscriber("nmea", Sentence, callback)
+
+rospy.spin()
